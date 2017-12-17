@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        （二）开发板选型｜wilton&#39;s blog
+        (三)路由板的硬件组成｜wilton&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/16/路由板选型/">
+    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/17/路由器的硬件组成/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,13 +145,13 @@
 <!--only post-->
 
 
-<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/3.jpg">
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/4.jpg">
 
 
 <style>
     
     header.intro-header {
-        background-image: url('http://p0uu80tg9.bkt.clouddn.com/3.jpg');
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/4.jpg');
     }
 
     
@@ -162,14 +162,14 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>（二）开发板选型</h1>
+                    <h1>(三)路由板的硬件组成</h1>
                     
-                    <h2 class="subheading">有时候，我们追寻更多的东西时候，却忘了我们已经拥有的一切。</h2>
+                    <h2 class="subheading">相似的人适合一起欢闹，互补的人适合一起变老。</h2>
                     
                     <span class="meta">
                          作者 wilton
                         <span>
-                          日期 2017-12-16
+                          日期 2017-12-17
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -187,7 +187,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            （二）开发板选型
+            (三)路由板的硬件组成
         </span>
     </div>
 </header>
@@ -198,22 +198,22 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1 id="路由板选型"><a href="#路由板选型" class="headerlink" title="路由板选型"></a>路由板选型</h1><h2 id="MIPS处理器架构"><a href="#MIPS处理器架构" class="headerlink" title="MIPS处理器架构"></a>MIPS处理器架构</h2><p>MIPS架构是由斯坦福大学的教授约翰·轩尼诗带领他的团队开发的一款处理器。在随后的3年时间他创立了MIPS公司。在2002年，中国科学院计算机所开始研发龙芯处理器，采用MIPS架构，但未经MIPS公司的授权，遭到侵权的控告。2009年中国科学院与MIPS公司达成和解，得到正式授权。<br>现在所使用的路由器，其中90%以上都是采用MIPS架构，并且基本上都是32位处理器。在同等价位的情况下，32位高集成高性能的处理器，只有MIPS在这个定位领域中最强。</p>
-<h2 id="基于芯片解决方案的厂商"><a href="#基于芯片解决方案的厂商" class="headerlink" title="基于芯片解决方案的厂商"></a>基于芯片解决方案的厂商</h2><p>路由芯片目前普遍采用的是SoC（System on a Chip）设计，路由器厂商喜欢叫作RoC（Router on a Chip）。</p>
-<h3 id="Atheros公司"><a href="#Atheros公司" class="headerlink" title="Atheros公司"></a>Atheros公司</h3><p>Atheros是全球路由芯片的顶级公司，其创始人是MIPS架构的发明者约翰·轩尼诗。Atheros的芯片采用MIPS32位架构设计，并且该公司也是WiFi标准的定制者之一。Atheros也是目前OpenWrt系统支持最完整、全面的芯片。Atheros在2011年被高通收购，目前旗下产品线正在逐步切换到高通品牌下。</p>
-<h3 id="Broadcom公司"><a href="#Broadcom公司" class="headerlink" title="Broadcom公司"></a>Broadcom公司</h3><p>Broadcom是全球主要无线路由芯片的出货商之一，其产品以稳定可靠著称。小米第一代路由器便是采用BCM470X系列处理器，该处理器采用ARM架构，不过Broadcom其他的路由路由芯片大部分都是MIPS架构。</p>
-<h3 id="Relink公司"><a href="#Relink公司" class="headerlink" title="Relink公司"></a>Relink公司</h3><p>雷凌科技来自台湾地区，也是一家常年耕耘在路由器领域的芯片厂商，且是目前国内出货量最大的路由厂商，该厂商不论是产业链，还是相关开发资料，在国内都是最成熟的，其芯片价格也是最便宜的。因此目前国内上市的智能路由产品大部分都是采用该公司方案。这家厂商的问题主要是不重视OpenWrt项目，并且其重要的驱动代码并不开源。RaLink在2011年被联发科收购，目前产品已经完全切换换到MTK品牌。</p>
+                <h1 id="路由版的硬件组成"><a href="#路由版的硬件组成" class="headerlink" title="路由版的硬件组成"></a>路由版的硬件组成</h1><h2 id="中央处理单元"><a href="#中央处理单元" class="headerlink" title="中央处理单元"></a>中央处理单元</h2><p>中央处理单元（Central Processor Until）也称为中央处理器。作为路由器的中枢，CPU主要负责执行计算机操作系统（IOS）的指令和解释、执行用户输入的指令。例如网络拓扑发生改变时，重新计算网络拓扑数据库。因此，CPU的处理能力决定的路由器的性能。</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="只读内存"><a href="#只读内存" class="headerlink" title="只读内存"></a>只读内存</h3><p>只读内存（ROM）在路由器中的功能与计算机的ROM相似，主要用于系统初始化功能。ROM主要包含：  </p>
 <blockquote>
-<p>这些厂商将内存控制、外围IO电路接口、Switch芯片、WiFi芯片、加密芯片、SATA接口、PCIE接口、USB接口等集成到了一块指甲片大小的芯片中，其功耗只有1~3W，性能达到了400Hz到800Hz之前。但目前也少数厂家已经开始基于ARM开发路由芯片了，比如Broadcom公司的BCM470X系列芯片。</p>
+<ol>
+<li>系统加电自检代码（POST）：用于检测路由器中各硬件部分是否完好；</li>
+<li>系统引导代码（BootStrap）：用于启动路由器并载入IOS操作系统；</li>
+<li>备份的IOS操作系统：以便原有IOS操作系统被删除或破坏时使用，通常这个IOS比现运行IOS的版本要低一些，但足以路由器启动和工作。  </li>
+</ol>
 </blockquote>
-<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>确定芯片后要确定路由器是否被OpenWrt官方支持，可以点击此连接查看<a href="https://wiki.openwrt.org/toh/start。" target="_blank" rel="noopener">https://wiki.openwrt.org/toh/start。</a><br>选择的原则是：</p>
-<blockquote>
-<ul>
-<li>接口方面：支持JTAG、TTL和USB；</li>
-<li>产品成熟度好，普及度高，流通性强，价格便宜；</li>
-<li>互联网上资料丰富，论坛里拿该型号路由器为话题的比较多；</li>
-<li>产品相对上游芯片商的解决方案修改不打，便于通过上游SDK进行调试。</li>
-</ul>
+<p>用户一般不能修改其中的代码。如果要进行升级，则需要替换ROM芯片。</p>
+<h3 id="闪存"><a href="#闪存" class="headerlink" title="闪存"></a>闪存</h3><p>闪存（Flash）是可读可写的存储器，在系统重新启动或关机之后任然能保存数据。Flash中存放着当前使用中的IOS。事实上，如果Flash容量足够大，甚至可以存放多个操作系统，这在进行IOS升级时十分有用。当不知道IOS是否稳定时，可在升级后仍然保留旧版IOS，当出现问题时可迅速退回到旧版操作系统，从而避免长时间的网络故障。</p>
+<h3 id="非易失性RAM"><a href="#非易失性RAM" class="headerlink" title="非易失性RAM"></a>非易失性RAM</h3><p>非易失性RAM（NVRAM）是可读可写的存储器，在系统重新启动或关机后仍能保存数据。由于NVRAM仅用于保存启动配置文件（Startup-Config），故其容量较小，通常路由器上只配置32KB~128KB的NVRAM。NVRAM的速度较快，但是成本也比较高。</p>
+<h3 id="随机存储器"><a href="#随机存储器" class="headerlink" title="随机存储器"></a>随机存储器</h3><p>随机存储器（RAM）也是可读可写的存储器，但其存储的内容在系统重启或关机后将被清楚。和计算机的RAM一样，路由器中的RAM也是运行期间暂时存放操作系统和数字的存储器，让路由器能迅速访问这些信息。RAM的存放速度优于上面提到的3种内存的存取速度。<br>运行期间，RAM中包含路由表项目、APP缓冲项目，日志项目和列队中排队等待发送的分组。除此之外，还包括运行配置文件（Running-config）、正在执行的代码、IOS操作系统程序和一些临时数据信息。</p>
+<h3 id="其他芯片"><a href="#其他芯片" class="headerlink" title="其他芯片"></a>其他芯片</h3><p>一个普通的路由器，除了上述CPU、内存、存储三个主要芯片外，还有供电模块以及CPU没有集成功能的相关芯片。</p>
+<h2 id="硬件启动过程"><a href="#硬件启动过程" class="headerlink" title="硬件启动过程"></a>硬件启动过程</h2><blockquote>
+<p>上电–&gt;晶振起振–&gt;CPU启动内部代码–&gt;Uboot启动–&gt;Uboot根据参数设置倍频–&gt;Uboot进行一些内部寄存器配置–&gt;Uboot启动操作系统</p>
 </blockquote>
 <p>（以上内容部分源于网络，如果涉及到你的版权问题，请<a href="http://wilton.wang/about/" target="_blank" rel="noopener">联系我</a>，我会尽快处理。）</p>
 
@@ -222,15 +222,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/12/17/路由器的硬件组成/" data-toggle="tooltip" data-placement="top"
-                           title="(三)路由板的硬件组成">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/12/16/OpenWrt概述/" data-toggle="tooltip" data-placement="top"
-                           title="（一）OpenWrt概述">Next Post &rarr;</a>
+                        <a href="/2017/12/16/路由板选型/" data-toggle="tooltip" data-placement="top"
+                           title="（二）开发板选型">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -265,7 +260,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由板选型"><span class="toc-text"><a href="#&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;" class="headerlink" title="&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;"></a>&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIPS处理器架构"><span class="toc-text"><a href="#MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;" class="headerlink" title="MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;"></a>MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于芯片解决方案的厂商"><span class="toc-text"><a href="#&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;" class="headerlink" title="&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;"></a>&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Atheros公司"><span class="toc-text"><a href="#Atheros&#x516C;&#x53F8;" class="headerlink" title="Atheros&#x516C;&#x53F8;"></a>Atheros&#x516C;&#x53F8;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Broadcom公司"><span class="toc-text"><a href="#Broadcom&#x516C;&#x53F8;" class="headerlink" title="Broadcom&#x516C;&#x53F8;"></a>Broadcom&#x516C;&#x53F8;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Relink公司"><span class="toc-text"><a href="#Relink&#x516C;&#x53F8;" class="headerlink" title="Relink&#x516C;&#x53F8;"></a>Relink&#x516C;&#x53F8;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-text"><a href="#&#x9009;&#x62E9;" class="headerlink" title="&#x9009;&#x62E9;"></a>&#x9009;&#x62E9;</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由版的硬件组成"><span class="toc-text"><a href="#&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;" class="headerlink" title="&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;"></a>&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中央处理单元"><span class="toc-text"><a href="#&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;" class="headerlink" title="&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;"></a>&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存"><span class="toc-text"><a href="#&#x5185;&#x5B58;" class="headerlink" title="&#x5185;&#x5B58;"></a>&#x5185;&#x5B58;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只读内存"><span class="toc-text"><a href="#&#x53EA;&#x8BFB;&#x5185;&#x5B58;" class="headerlink" title="&#x53EA;&#x8BFB;&#x5185;&#x5B58;"></a>&#x53EA;&#x8BFB;&#x5185;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闪存"><span class="toc-text"><a href="#&#x95EA;&#x5B58;" class="headerlink" title="&#x95EA;&#x5B58;"></a>&#x95EA;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非易失性RAM"><span class="toc-text"><a href="#&#x975E;&#x6613;&#x5931;&#x6027;RAM" class="headerlink" title="&#x975E;&#x6613;&#x5931;&#x6027;RAM"></a>&#x975E;&#x6613;&#x5931;&#x6027;RAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机存储器"><span class="toc-text"><a href="#&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;"></a>&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他芯片"><span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x82AF;&#x7247;" class="headerlink" title="&#x5176;&#x4ED6;&#x82AF;&#x7247;"></a>&#x5176;&#x4ED6;&#x82AF;&#x7247;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件启动过程"><span class="toc-text"><a href="#&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"></a>&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
