@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        （三）路由板的硬件组成｜wilton&#39;s blog
+        诺基亚百年沉浮史（一）｜wilton&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/17/路由器的硬件组成/">
+    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/18/诺基亚百年沉浮史（一）/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,13 +145,13 @@
 <!--only post-->
 
 
-<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/4.jpg">
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/nokia.jpg">
 
 
 <style>
     
     header.intro-header {
-        background-image: url('http://p0uu80tg9.bkt.clouddn.com/4.jpg');
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/nokia.jpg');
     }
 
     
@@ -162,23 +162,23 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>（三）路由板的硬件组成</h1>
+                    <h1>诺基亚百年沉浮史（一）</h1>
                     
-                    <h2 class="subheading">相似的人适合一起欢闹，互补的人适合一起变老。</h2>
+                    <h2 class="subheading">不忘初心，方得始终。</h2>
                     
                     <span class="meta">
                          作者 wilton
                         <span>
-                          日期 2017-12-17
+                          日期 2017-12-18
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#OpenWrt"
-                           title="OpenWrt">OpenWrt</a>
+                        <a class="tag" href="/tags/#IT"
+                           title="IT">IT</a>
                         
-                        <a class="tag" href="/tags/#嵌入式"
-                           title="嵌入式">嵌入式</a>
+                        <a class="tag" href="/tags/#Nokia"
+                           title="Nokia">Nokia</a>
                         
                     </div>
                 </div>
@@ -187,7 +187,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            （三）路由板的硬件组成
+            诺基亚百年沉浮史（一）
         </span>
     </div>
 </header>
@@ -198,39 +198,17 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1 id="路由版的硬件组成"><a href="#路由版的硬件组成" class="headerlink" title="路由版的硬件组成"></a>路由版的硬件组成</h1><h2 id="中央处理单元"><a href="#中央处理单元" class="headerlink" title="中央处理单元"></a>中央处理单元</h2><p>中央处理单元（Central Processor Until）也称为中央处理器。作为路由器的中枢，CPU主要负责执行计算机操作系统（IOS）的指令和解释、执行用户输入的指令。例如网络拓扑发生改变时，重新计算网络拓扑数据库。因此，CPU的处理能力决定的路由器的性能。</p>
-<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="只读内存"><a href="#只读内存" class="headerlink" title="只读内存"></a>只读内存</h3><p>只读内存（ROM）在路由器中的功能与计算机的ROM相似，主要用于系统初始化功能。ROM主要包含：  </p>
-<blockquote>
-<ol>
-<li>系统加电自检代码（POST）：用于检测路由器中各硬件部分是否完好；</li>
-<li>系统引导代码（BootStrap）：用于启动路由器并载入IOS操作系统；</li>
-<li>备份的IOS操作系统：以便原有IOS操作系统被删除或破坏时使用，通常这个IOS比现运行IOS的版本要低一些，但足以路由器启动和工作。  </li>
-</ol>
-</blockquote>
-<p>用户一般不能修改其中的代码。如果要进行升级，则需要替换ROM芯片。</p>
-<h3 id="闪存"><a href="#闪存" class="headerlink" title="闪存"></a>闪存</h3><p>闪存（Flash）是可读可写的存储器，在系统重新启动或关机之后任然能保存数据。Flash中存放着当前使用中的IOS。事实上，如果Flash容量足够大，甚至可以存放多个操作系统，这在进行IOS升级时十分有用。当不知道IOS是否稳定时，可在升级后仍然保留旧版IOS，当出现问题时可迅速退回到旧版操作系统，从而避免长时间的网络故障。</p>
-<h3 id="非易失性RAM"><a href="#非易失性RAM" class="headerlink" title="非易失性RAM"></a>非易失性RAM</h3><p>非易失性RAM（NVRAM）是可读可写的存储器，在系统重新启动或关机后仍能保存数据。由于NVRAM仅用于保存启动配置文件（Startup-Config），故其容量较小，通常路由器上只配置32KB~128KB的NVRAM。NVRAM的速度较快，但是成本也比较高。</p>
-<h3 id="随机存储器"><a href="#随机存储器" class="headerlink" title="随机存储器"></a>随机存储器</h3><p>随机存储器（RAM）也是可读可写的存储器，但其存储的内容在系统重启或关机后将被清楚。和计算机的RAM一样，路由器中的RAM也是运行期间暂时存放操作系统和数字的存储器，让路由器能迅速访问这些信息。RAM的存放速度优于上面提到的3种内存的存取速度。<br>运行期间，RAM中包含路由表项目、APP缓冲项目，日志项目和列队中排队等待发送的分组。除此之外，还包括运行配置文件（Running-config）、正在执行的代码、IOS操作系统程序和一些临时数据信息。</p>
-<h3 id="其他芯片"><a href="#其他芯片" class="headerlink" title="其他芯片"></a>其他芯片</h3><p>一个普通的路由器，除了上述CPU、内存、存储三个主要芯片外，还有供电模块以及CPU没有集成功能的相关芯片。</p>
-<h2 id="硬件启动过程"><a href="#硬件启动过程" class="headerlink" title="硬件启动过程"></a>硬件启动过程</h2><blockquote>
-<p>上电–&gt;晶振起振–&gt;CPU启动内部代码–&gt;Uboot启动–&gt;Uboot根据参数设置倍频–&gt;Uboot进行一些内部寄存器配置–&gt;Uboot启动操作系统</p>
-</blockquote>
-<p>（以上内容部分源于网络，如果涉及到你的版权问题，请<a href="http://wilton.wang/about/" target="_blank" rel="noopener">联系我</a>，我会尽快处理。）</p>
+                <h1 id="诺基亚百年沉浮史（一）"><a href="#诺基亚百年沉浮史（一）" class="headerlink" title="诺基亚百年沉浮史（一）"></a>诺基亚百年沉浮史（一）</h1><p>当提起诺基亚的时候，你可能会想到一部手机，但更多的可能是比较抽象的东西。比如说相处的时光，或者是一些与诺基亚相关的回忆。我的第一部真正意义上属于自己的手机就是诺基亚的，可能你们大多数的也是。诺基亚5130XM，一款的音乐手机，陪我度过了整个高中时光。<br><img src="http://p0uu80tg9.bkt.clouddn.com/nokia_5130.jpg" alt="nokia 5130xm"><br>诺基亚作为曾经世界手机的制造之王，以全球40%左右的市场份额，将竞争对手们远远抛在后面。那么这个公司背后有怎样的故事呢？一个公司为什么会这么成功，有影响力，而且走在世界前端。而后却遁入微软的阴影被渐渐遗忘，又有这样的故事呢？也许可以从诺基亚学到一些重要的东西。让我们从头说起！<br>诺基亚作为一家公司，其历史远远要比AT&amp;T和蓝色巨人IBM长。其历史可以追溯到1865年，一名叫Fredrik Idestam的采矿工程师在芬兰南部设立了第一个造纸厂。几年后，他在Nokianvirta河附近设立了第二家工厂。这条河启发了他，将他的公司命名为Nokia。这挺有意思的，他可能也没想到这个名字会变得家喻户晓。没多久，诺基亚就进军其他行业了。比如橡胶，线缆，轮胎，电视和靴子等等。由于诺基亚生产电线的绝缘材料，所在它在1922年通过收购一家制造电话线和电话的工厂进入了电线和电话市场。虽然当时的诺基亚和电总算沾上了点边，但是依旧没有什么技术含量，和我们曾经钟爱的诺基亚完全不同。放下这些，我们来说说我们熟知的诺基亚。<br>回到上世纪60年代。当时世界有两股势力，完全不同的社会，政治和思维方式正在全世界范围扩散。但是发生的那么多事情中，却有一件有着不祥之兆的事情————冷战。那是19世纪60年代中期，前线却不像名字一样冷静，核战争一触即发。共产主义力量苏联已经开始测试核弹，而坚持资本主义的美国也紧随其后，核试验使冷战变得更加严重。这样一种紧张状态让全世界都开始担心，甚至连芬兰这样的中立国家都开始采取措施，以防最坏的情况发生。芬兰政府希望进行无线电通讯的军事研究，以便可靠的应对可能的军事通讯需求，一家叫诺基亚的小公司竟然竞标了。<br>从上世纪60年代起，诺基亚为商业和军方用户制造对讲机。开始它是与另一家公司同时进行开发，但后来诺基亚收购了这家小公司。经过各种尝试，诺基亚积累了一些以后做手机的技术，包括超高频发射和接收技术以及一些元器件的制造经验。从开始的专注发展通讯设施，到后来发展出了民用汽车通讯网络。整个系统相对现在来将相当粗糙，因为并不能承载多人通话。但是真正的技术爆发发生在1980年代，那时开始实现产量。公司开始在生产中应用量产技术，规模经济可以实现更少的生产成本，更小的体积，更便宜的价格。诺基亚出口了其中30%的产品，并在1985年开始了全球扩张。芬兰政府在跟Tandy合作之后，终于在美国市场得到了大展拳脚的机会。<br><img src="http://p0uu80tg9.bkt.clouddn.com/1985.jpg" alt="nokia 1985"><br>那时候，移动电话还只是个概念。你不需要投币就能打电话，也不需要排队等付付费电话，而且在家也不需要顾虑电话线太短，你可以随时随地的打电话。在需求超出预期30倍之后，终于有一群人意识到需求之大。这只能说明人们爱打电话，诺基亚就是抓住了这点吧。据说1980年代后期诺基亚成功的秘诀在于，既能在移动通信产业中进入多家市场，同时又能在其他产业中继续发力。1987年，诺基亚制造了Cityman，诺基亚正真意义的首款手机，支持模拟通讯网络，与摩托罗拉分庭抗礼。那只成为了诺基亚第一步占据了新闻头条的手机，是由于当时的苏联总统戈尔巴乔夫在媒体发布会中被拍到在用这部手机。当时大哥大的广告语是，“为了需要独立的你无阻联通（英文）”。对于诺基亚来说其意义重大，它垫底了诺基亚未来辉煌十数年的基础。<br><img src="http://p0uu80tg9.bkt.clouddn.com/cityman.jpg" alt="nokia_cityman"><br>但是在1988和1989年并不是那么顺利，诺基亚被卷入了一场危机中。当时苏联解体，欧洲经济大萧条，诺基亚的产品似乎没有那么大的需求了。由此，诺基亚管理层开始有了变动，前花旗银行银行家约玛·奥利拉在1992年担任诺基亚CEO职位。作为银行家，约玛多少是有丰富经验的。他做了一个决定，描述了公司接下来十几年的未来。他决定关闭公司的其他部门，让公司专注与移动领域。从此，诺基亚进入了它的黄金年代，1900年代。那是，诺基亚把所有竞争甩在了八百里开外，当之无愧的成为了工业史上增长速度最快的公司之一。<br>其实期间的故事还有很多，包括上世纪80年代前摩托罗拉垄断了基于模拟电路和信号处理的第一代移动通信技术，以及上世纪70年代后数字信号处理技术和半导体技术的发展使基于数字电路和信号处理技术的第二代移动通讯技术渐渐浮出水面，和后来在1982年开始定制的新一代的移动通信标准GSM等其中或多或少都对诺基亚的发展产生了一定的影响。但是诺基亚正真迎来辉煌还是在1900年代的后十几年，也正是我们开始慢慢熟知的诺基亚。在之后的章节中，我会娓娓道来。</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/12/18/诺基亚百年沉浮史（一）/" data-toggle="tooltip" data-placement="top"
-                           title="诺基亚百年沉浮史（一）">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/12/16/路由板选型/" data-toggle="tooltip" data-placement="top"
-                           title="（二）开发板选型">Next Post &rarr;</a>
+                        <a href="/2017/12/17/路由器的硬件组成/" data-toggle="tooltip" data-placement="top"
+                           title="（三）路由板的硬件组成">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -265,7 +243,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由版的硬件组成"><span class="toc-text"><a href="#&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;" class="headerlink" title="&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;"></a>&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中央处理单元"><span class="toc-text"><a href="#&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;" class="headerlink" title="&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;"></a>&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存"><span class="toc-text"><a href="#&#x5185;&#x5B58;" class="headerlink" title="&#x5185;&#x5B58;"></a>&#x5185;&#x5B58;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只读内存"><span class="toc-text"><a href="#&#x53EA;&#x8BFB;&#x5185;&#x5B58;" class="headerlink" title="&#x53EA;&#x8BFB;&#x5185;&#x5B58;"></a>&#x53EA;&#x8BFB;&#x5185;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闪存"><span class="toc-text"><a href="#&#x95EA;&#x5B58;" class="headerlink" title="&#x95EA;&#x5B58;"></a>&#x95EA;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非易失性RAM"><span class="toc-text"><a href="#&#x975E;&#x6613;&#x5931;&#x6027;RAM" class="headerlink" title="&#x975E;&#x6613;&#x5931;&#x6027;RAM"></a>&#x975E;&#x6613;&#x5931;&#x6027;RAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机存储器"><span class="toc-text"><a href="#&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;"></a>&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他芯片"><span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x82AF;&#x7247;" class="headerlink" title="&#x5176;&#x4ED6;&#x82AF;&#x7247;"></a>&#x5176;&#x4ED6;&#x82AF;&#x7247;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件启动过程"><span class="toc-text"><a href="#&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"></a>&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#诺基亚百年沉浮史（一）"><span class="toc-text"><a href="#&#x8BFA;&#x57FA;&#x4E9A;&#x767E;&#x5E74;&#x6C89;&#x6D6E;&#x53F2;&#xFF08;&#x4E00;&#xFF09;" class="headerlink" title="&#x8BFA;&#x57FA;&#x4E9A;&#x767E;&#x5E74;&#x6C89;&#x6D6E;&#x53F2;&#xFF08;&#x4E00;&#xFF09;"></a>&#x8BFA;&#x57FA;&#x4E9A;&#x767E;&#x5E74;&#x6C89;&#x6D6E;&#x53F2;&#xFF08;&#x4E00;&#xFF09;</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -287,11 +265,11 @@
                     </h5>
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#OpenWrt"
-                           title="OpenWrt">OpenWrt</a>
+                        <a class="tag" href="/tags/#IT"
+                           title="IT">IT</a>
                         
-                        <a class="tag" href="/tags/#嵌入式"
-                           title="嵌入式">嵌入式</a>
+                        <a class="tag" href="/tags/#Nokia"
+                           title="Nokia">Nokia</a>
                         
                     </div>
                 </section>
