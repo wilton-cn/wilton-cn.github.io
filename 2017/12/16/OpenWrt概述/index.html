@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王涛在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+    <link rel="alternate" type="application/atom+xml" title="wilton" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        （一）OpenWrt概述｜wilton&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/16/OpenWrt概述/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/mobil.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    wilton
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archive/">archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/0.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/0.jpg');
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>（一）OpenWrt概述</h1>
+                    
+                    <h2 class="subheading">我们一直在寻觅，寻觅，那个我们都有的结局。</h2>
+                    
+                    <span class="meta">
+                         作者 wilton
+                        <span>
+                          日期 2017-12-16
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            （一）OpenWrt概述
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="OpenWrt概述"><a href="#OpenWrt概述" class="headerlink" title="OpenWrt概述"></a>OpenWrt概述</h1><h2 id="OpenWrt简介"><a href="#OpenWrt简介" class="headerlink" title="OpenWrt简介"></a>OpenWrt简介</h2><p>OpenWrt是嵌入式设备的Linux发行版，以GPL许可协议发行。<br>OpenWrt项目由2004年1月开始，第一个版本是基于LinkSys提供的GPL源码。在LinkSys代码收费之后，团队改用了正式发布的Linux内核来集成，将OpenWrt完全模块化，不断推出补丁和驱动。<br>其主要特点如下：  </p>
+<blockquote>
+<ul>
+<li>代码里不含第三方开源软件，只包含开源包地址；</li>
+<li>编译时自动下载源代码、打补丁来满足指定平台要求，并编译；</li>
+<li>使用LuCI作为最终用户管理界面。LuCI以Apache许可协议发布Web管理功能代码；</li>
+<li>UCI通用配置管理方法；</li>
+<li>开放和可扩展的OPKG格式安装升级包。  </li>
+</ul>
+</blockquote>
+<p>由于OpenWrt是基于LInux内核的，所以无论是ARM，PowerPC或MIPS架构的处理器，都必须经过一下过程：</p>
+<blockquote>
+<ol>
+<li>创建Linux交叉编译环境；</li>
+<li>建立Bootloader；</li>
+<li>移植Linux内核；</li>
+<li>建立Rootfs(根文件系统)；</li>
+<li>安装驱动程序；</li>
+<li>安装软件。</li>
+</ol>
+</blockquote>
+<h1 id="和Android比较"><a href="#和Android比较" class="headerlink" title="和Android比较"></a>和Android比较</h1><p>Android是谷歌研发的一款智能终端操作系统，是一种基于Linux的开源代码操作系统。如今，Android操作系统已经演化成为一个移动设备开发品台，其软件层次大体上分为4层，即操作系统、中间层、应用层程序框架和应用程序。</p>
+<table>
+<thead>
+<tr>
+<th>　　  　</th>
+<th style="text-align:left">Android</th>
+<th style="text-align:left">OpenWrt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核</td>
+<td style="text-align:left">Linux内核</td>
+<td style="text-align:left">Linux内核</td>
+</tr>
+<tr>
+<td>许可协议</td>
+<td style="text-align:left">Apache2.0</td>
+<td style="text-align:left">GUN Linnux</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td style="text-align:left">面向终端用户，手持设备。用户接口<br>采用JAVA提供图形用户界面GUI。</td>
+<td style="text-align:left">服务器、家庭路由器等，用户接口默认为GUI<br>命令行提供，也支持通过Web方式来管理。</td>
+</tr>
+<tr>
+<td>开发主导模式</td>
+<td style="text-align:left">由谷歌公司主导开发</td>
+<td style="text-align:left">由OpenWrt.org社区主导，社区由个人组成，更<br>开放</td>
+</tr>
+</tbody>
+</table>
+<h2 id="和其他WRT比较"><a href="#和其他WRT比较" class="headerlink" title="和其他WRT比较"></a>和其他WRT比较</h2><h3 id="Tomato-WRT"><a href="#Tomato-WRT" class="headerlink" title="Tomato WRT"></a>Tomato WRT</h3><p>Tomato是一种小型的LinkSys的WRT54G，是博通路由器的另外一种可选的替换固件。它有一个新的易于使用的GUI，一个新的带宽监控工具，更为先进的服务质量(QoS)和访问限制，使用新的无线功能。不过它也有些明显的缺点，例如仅有发布说明，没后修改记录，最近不更新等。</p>
+<h3 id="DD-WRT"><a href="#DD-WRT" class="headerlink" title="DD-WRT"></a>DD-WRT</h3><p>DD-WRT是一个基于Linux的开源固件，适合各种各样的无线路由和嵌入式操作系统。其重点在于提供简单的处理，同时在各种硬件平台的框架内支持大量的功能。它是另外一款路由器代码发行版，从2006年2月开始开发，没有分支稳定版本。用在私人用途上，DD-WRT是免费的，如果用在商业用途则需要获取软件许可。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>OpenWrt相对于其他几个无线路由器操作系统来说，版本管理最为规范，社区最活跃，是最适合选为基础来进一步开发的。当然，OpenWrt也适合初学者来学习。</p>
+<p>（以上内容部分源于网络，如果涉及到你的版权问题，请<a href="http://wilton.wang/about/" target="_blank" rel="noopener">联系我</a>，我会尽快处理。）</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/16/路由板选型/" data-toggle="tooltip" data-placement="top"
+                           title="（二）开发板选型">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/14/开关电源的基本原理及分类/" data-toggle="tooltip" data-placement="top"
+                           title="（一）开关电源的基本原理及分类">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
+                        <script type="text/javascript">
+                    (function(d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                        </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OpenWrt概述"><span class="toc-text"><a href="#OpenWrt&#x6982;&#x8FF0;" class="headerlink" title="OpenWrt&#x6982;&#x8FF0;"></a>OpenWrt&#x6982;&#x8FF0;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenWrt简介"><span class="toc-text"><a href="#OpenWrt&#x7B80;&#x4ECB;" class="headerlink" title="OpenWrt&#x7B80;&#x4ECB;"></a>OpenWrt&#x7B80;&#x4ECB;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#和Android比较"><span class="toc-text"><a href="#&#x548C;Android&#x6BD4;&#x8F83;" class="headerlink" title="&#x548C;Android&#x6BD4;&#x8F83;"></a>&#x548C;Android&#x6BD4;&#x8F83;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#和其他WRT比较"><span class="toc-text"><a href="#&#x548C;&#x5176;&#x4ED6;WRT&#x6BD4;&#x8F83;" class="headerlink" title="&#x548C;&#x5176;&#x4ED6;WRT&#x6BD4;&#x8F83;"></a>&#x548C;&#x5176;&#x4ED6;WRT&#x6BD4;&#x8F83;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomato-WRT"><span class="toc-text"><a href="#Tomato-WRT" class="headerlink" title="Tomato WRT"></a>Tomato WRT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DD-WRT"><span class="toc-text"><a href="#DD-WRT" class="headerlink" title="DD-WRT"></a>DD-WRT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/wilton_cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/wang-tao-56-88-15">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5219130828">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wilton-cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; wilton 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Power by <a href="https://hexo.io//"> Hexo </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http:wilton-cn.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fe54cfdb47c7afe1bd4d9a1986637766';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+</body>
+
+</html>

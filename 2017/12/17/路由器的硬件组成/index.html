@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王涛在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+    <link rel="alternate" type="application/atom+xml" title="wilton" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        （三）路由板的硬件组成｜wilton&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/17/路由器的硬件组成/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/mobil.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    wilton
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archive/">archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/4.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/4.jpg');
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>（三）路由板的硬件组成</h1>
+                    
+                    <h2 class="subheading">相似的人适合一起欢闹，互补的人适合一起变老。</h2>
+                    
+                    <span class="meta">
+                         作者 wilton
+                        <span>
+                          日期 2017-12-17
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            （三）路由板的硬件组成
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="路由版的硬件组成"><a href="#路由版的硬件组成" class="headerlink" title="路由版的硬件组成"></a>路由版的硬件组成</h1><h2 id="中央处理单元"><a href="#中央处理单元" class="headerlink" title="中央处理单元"></a>中央处理单元</h2><p>中央处理单元（Central Processor Until）也称为中央处理器。作为路由器的中枢，CPU主要负责执行计算机操作系统（IOS）的指令和解释、执行用户输入的指令。例如网络拓扑发生改变时，重新计算网络拓扑数据库。因此，CPU的处理能力决定的路由器的性能。</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="只读内存"><a href="#只读内存" class="headerlink" title="只读内存"></a>只读内存</h3><p>只读内存（ROM）在路由器中的功能与计算机的ROM相似，主要用于系统初始化功能。ROM主要包含：  </p>
+<blockquote>
+<ol>
+<li>系统加电自检代码（POST）：用于检测路由器中各硬件部分是否完好；</li>
+<li>系统引导代码（BootStrap）：用于启动路由器并载入IOS操作系统；</li>
+<li>备份的IOS操作系统：以便原有IOS操作系统被删除或破坏时使用，通常这个IOS比现运行IOS的版本要低一些，但足以路由器启动和工作。  </li>
+</ol>
+</blockquote>
+<p>用户一般不能修改其中的代码。如果要进行升级，则需要替换ROM芯片。</p>
+<h3 id="闪存"><a href="#闪存" class="headerlink" title="闪存"></a>闪存</h3><p>闪存（Flash）是可读可写的存储器，在系统重新启动或关机之后任然能保存数据。Flash中存放着当前使用中的IOS。事实上，如果Flash容量足够大，甚至可以存放多个操作系统，这在进行IOS升级时十分有用。当不知道IOS是否稳定时，可在升级后仍然保留旧版IOS，当出现问题时可迅速退回到旧版操作系统，从而避免长时间的网络故障。</p>
+<h3 id="非易失性RAM"><a href="#非易失性RAM" class="headerlink" title="非易失性RAM"></a>非易失性RAM</h3><p>非易失性RAM（NVRAM）是可读可写的存储器，在系统重新启动或关机后仍能保存数据。由于NVRAM仅用于保存启动配置文件（Startup-Config），故其容量较小，通常路由器上只配置32KB~128KB的NVRAM。NVRAM的速度较快，但是成本也比较高。</p>
+<h3 id="随机存储器"><a href="#随机存储器" class="headerlink" title="随机存储器"></a>随机存储器</h3><p>随机存储器（RAM）也是可读可写的存储器，但其存储的内容在系统重启或关机后将被清楚。和计算机的RAM一样，路由器中的RAM也是运行期间暂时存放操作系统和数字的存储器，让路由器能迅速访问这些信息。RAM的存放速度优于上面提到的3种内存的存取速度。<br>运行期间，RAM中包含路由表项目、APP缓冲项目，日志项目和列队中排队等待发送的分组。除此之外，还包括运行配置文件（Running-config）、正在执行的代码、IOS操作系统程序和一些临时数据信息。</p>
+<h3 id="其他芯片"><a href="#其他芯片" class="headerlink" title="其他芯片"></a>其他芯片</h3><p>一个普通的路由器，除了上述CPU、内存、存储三个主要芯片外，还有供电模块以及CPU没有集成功能的相关芯片。</p>
+<h2 id="硬件启动过程"><a href="#硬件启动过程" class="headerlink" title="硬件启动过程"></a>硬件启动过程</h2><blockquote>
+<p>上电–&gt;晶振起振–&gt;CPU启动内部代码–&gt;Uboot启动–&gt;Uboot根据参数设置倍频–&gt;Uboot进行一些内部寄存器配置–&gt;Uboot启动操作系统</p>
+</blockquote>
+<p>（以上内容部分源于网络，如果涉及到你的版权问题，请<a href="http://wilton.wang/about/" target="_blank" rel="noopener">联系我</a>，我会尽快处理。）</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/18/诺基亚百年沉浮史1/" data-toggle="tooltip" data-placement="top"
+                           title="诺基亚百年沉浮史（一）">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/16/路由板选型/" data-toggle="tooltip" data-placement="top"
+                           title="（二）开发板选型">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
+                        <script type="text/javascript">
+                    (function(d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                        </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由版的硬件组成"><span class="toc-text"><a href="#&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;" class="headerlink" title="&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;"></a>&#x8DEF;&#x7531;&#x7248;&#x7684;&#x786C;&#x4EF6;&#x7EC4;&#x6210;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中央处理单元"><span class="toc-text"><a href="#&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;" class="headerlink" title="&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;"></a>&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5355;&#x5143;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存"><span class="toc-text"><a href="#&#x5185;&#x5B58;" class="headerlink" title="&#x5185;&#x5B58;"></a>&#x5185;&#x5B58;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只读内存"><span class="toc-text"><a href="#&#x53EA;&#x8BFB;&#x5185;&#x5B58;" class="headerlink" title="&#x53EA;&#x8BFB;&#x5185;&#x5B58;"></a>&#x53EA;&#x8BFB;&#x5185;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闪存"><span class="toc-text"><a href="#&#x95EA;&#x5B58;" class="headerlink" title="&#x95EA;&#x5B58;"></a>&#x95EA;&#x5B58;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非易失性RAM"><span class="toc-text"><a href="#&#x975E;&#x6613;&#x5931;&#x6027;RAM" class="headerlink" title="&#x975E;&#x6613;&#x5931;&#x6027;RAM"></a>&#x975E;&#x6613;&#x5931;&#x6027;RAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#随机存储器"><span class="toc-text"><a href="#&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;"></a>&#x968F;&#x673A;&#x5B58;&#x50A8;&#x5668;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他芯片"><span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x82AF;&#x7247;" class="headerlink" title="&#x5176;&#x4ED6;&#x82AF;&#x7247;"></a>&#x5176;&#x4ED6;&#x82AF;&#x7247;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件启动过程"><span class="toc-text"><a href="#&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"></a>&#x786C;&#x4EF6;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/wilton_cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/wang-tao-56-88-15">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5219130828">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wilton-cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; wilton 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Power by <a href="https://hexo.io//"> Hexo </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http:wilton-cn.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fe54cfdb47c7afe1bd4d9a1986637766';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+</body>
+
+</html>

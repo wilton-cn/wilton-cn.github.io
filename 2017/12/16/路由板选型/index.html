@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王涛在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+    <link rel="alternate" type="application/atom+xml" title="wilton" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        （二）开发板选型｜wilton&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http:wilton-cn.github.io/2017/12/16/路由板选型/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/mobil.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    wilton
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archive/">archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/3.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/3.jpg');
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>（二）开发板选型</h1>
+                    
+                    <h2 class="subheading">有时候，我们追寻更多的东西时候，却忘了我们已经拥有的一切。</h2>
+                    
+                    <span class="meta">
+                         作者 wilton
+                        <span>
+                          日期 2017-12-16
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            （二）开发板选型
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="路由板选型"><a href="#路由板选型" class="headerlink" title="路由板选型"></a>路由板选型</h1><h2 id="MIPS处理器架构"><a href="#MIPS处理器架构" class="headerlink" title="MIPS处理器架构"></a>MIPS处理器架构</h2><p>MIPS架构是由斯坦福大学的教授约翰·轩尼诗带领他的团队开发的一款处理器。在随后的3年时间他创立了MIPS公司。在2002年，中国科学院计算机所开始研发龙芯处理器，采用MIPS架构，但未经MIPS公司的授权，遭到侵权的控告。2009年中国科学院与MIPS公司达成和解，得到正式授权。<br>现在所使用的路由器，其中90%以上都是采用MIPS架构，并且基本上都是32位处理器。在同等价位的情况下，32位高集成高性能的处理器，只有MIPS在这个定位领域中最强。</p>
+<h2 id="基于芯片解决方案的厂商"><a href="#基于芯片解决方案的厂商" class="headerlink" title="基于芯片解决方案的厂商"></a>基于芯片解决方案的厂商</h2><p>路由芯片目前普遍采用的是SoC（System on a Chip）设计，路由器厂商喜欢叫作RoC（Router on a Chip）。</p>
+<h3 id="Atheros公司"><a href="#Atheros公司" class="headerlink" title="Atheros公司"></a>Atheros公司</h3><p>Atheros是全球路由芯片的顶级公司，其创始人是MIPS架构的发明者约翰·轩尼诗。Atheros的芯片采用MIPS32位架构设计，并且该公司也是WiFi标准的定制者之一。Atheros也是目前OpenWrt系统支持最完整、全面的芯片。Atheros在2011年被高通收购，目前旗下产品线正在逐步切换到高通品牌下。</p>
+<h3 id="Broadcom公司"><a href="#Broadcom公司" class="headerlink" title="Broadcom公司"></a>Broadcom公司</h3><p>Broadcom是全球主要无线路由芯片的出货商之一，其产品以稳定可靠著称。小米第一代路由器便是采用BCM470X系列处理器，该处理器采用ARM架构，不过Broadcom其他的路由路由芯片大部分都是MIPS架构。</p>
+<h3 id="Relink公司"><a href="#Relink公司" class="headerlink" title="Relink公司"></a>Relink公司</h3><p>雷凌科技来自台湾地区，也是一家常年耕耘在路由器领域的芯片厂商，且是目前国内出货量最大的路由厂商，该厂商不论是产业链，还是相关开发资料，在国内都是最成熟的，其芯片价格也是最便宜的。因此目前国内上市的智能路由产品大部分都是采用该公司方案。这家厂商的问题主要是不重视OpenWrt项目，并且其重要的驱动代码并不开源。RaLink在2011年被联发科收购，目前产品已经完全切换换到MTK品牌。</p>
+<blockquote>
+<p>这些厂商将内存控制、外围IO电路接口、Switch芯片、WiFi芯片、加密芯片、SATA接口、PCIE接口、USB接口等集成到了一块指甲片大小的芯片中，其功耗只有1~3W，性能达到了400Hz到800Hz之前。但目前也少数厂家已经开始基于ARM开发路由芯片了，比如Broadcom公司的BCM470X系列芯片。</p>
+</blockquote>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>确定芯片后要确定路由器是否被OpenWrt官方支持，可以点击此连接查看<a href="https://wiki.openwrt.org/toh/start。" target="_blank" rel="noopener">https://wiki.openwrt.org/toh/start。</a><br>选择的原则是：</p>
+<blockquote>
+<ul>
+<li>接口方面：支持JTAG、TTL和USB；</li>
+<li>产品成熟度好，普及度高，流通性强，价格便宜；</li>
+<li>互联网上资料丰富，论坛里拿该型号路由器为话题的比较多；</li>
+<li>产品相对上游芯片商的解决方案修改不打，便于通过上游SDK进行调试。</li>
+</ul>
+</blockquote>
+<p>（以上内容部分源于网络，如果涉及到你的版权问题，请<a href="http://wilton.wang/about/" target="_blank" rel="noopener">联系我</a>，我会尽快处理。）</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/17/路由器的硬件组成/" data-toggle="tooltip" data-placement="top"
+                           title="（三）路由板的硬件组成">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/16/OpenWrt概述/" data-toggle="tooltip" data-placement="top"
+                           title="（一）OpenWrt概述">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
+                        <script type="text/javascript">
+                    (function(d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                        </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由板选型"><span class="toc-text"><a href="#&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;" class="headerlink" title="&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;"></a>&#x8DEF;&#x7531;&#x677F;&#x9009;&#x578B;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MIPS处理器架构"><span class="toc-text"><a href="#MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;" class="headerlink" title="MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;"></a>MIPS&#x5904;&#x7406;&#x5668;&#x67B6;&#x6784;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于芯片解决方案的厂商"><span class="toc-text"><a href="#&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;" class="headerlink" title="&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;"></a>&#x57FA;&#x4E8E;&#x82AF;&#x7247;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5382;&#x5546;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Atheros公司"><span class="toc-text"><a href="#Atheros&#x516C;&#x53F8;" class="headerlink" title="Atheros&#x516C;&#x53F8;"></a>Atheros&#x516C;&#x53F8;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Broadcom公司"><span class="toc-text"><a href="#Broadcom&#x516C;&#x53F8;" class="headerlink" title="Broadcom&#x516C;&#x53F8;"></a>Broadcom&#x516C;&#x53F8;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Relink公司"><span class="toc-text"><a href="#Relink&#x516C;&#x53F8;" class="headerlink" title="Relink&#x516C;&#x53F8;"></a>Relink&#x516C;&#x53F8;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择"><span class="toc-text"><a href="#&#x9009;&#x62E9;" class="headerlink" title="&#x9009;&#x62E9;"></a>&#x9009;&#x62E9;</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#OpenWrt"
+                           title="OpenWrt">OpenWrt</a>
+                        
+                        <a class="tag" href="/tags/#嵌入式"
+                           title="嵌入式">嵌入式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/wilton_cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/wang-tao-56-88-15">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5219130828">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wilton-cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; wilton 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Power by <a href="https://hexo.io//"> Hexo </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http:wilton-cn.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fe54cfdb47c7afe1bd4d9a1986637766';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+</body>
+
+</html>
