@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        （四）OpenWrt--编译环境搭建｜wilton&#39;s blog
+        wilton&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/2018/01/04/编译准备/">
+    <link rel="canonical" href="http:wilton-cn.github.io/tags/无线通信/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="true
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -141,187 +141,255 @@
 </script>
 
 <!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/6.jpg">
-
-
 <style>
+    .intro-header .site-heading {
+        margin: 50px;
+    }
     
     header.intro-header {
-        background-image: url('http://p0uu80tg9.bkt.clouddn.com/6.jpg');
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/bg.jpg')
     }
-
     
 </style>
 
+<!-- Page Header -->
 <header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>（四）OpenWrt--编译环境搭建</h1>
-                    
-                    <h2 class="subheading">一般来说，“你已经很棒了”意思是“你并不是很棒”。</h2>
-                    
-                    <span class="meta">
-                         作者 wilton
-                        <span>
-                          日期 2018-01-04
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
-                        <a class="tag" href="/tags/#OpenWrt"
-                           title="OpenWrt">OpenWrt</a>
-                        
-                        <a class="tag" href="/tags/#嵌入式"
-                           title="嵌入式">嵌入式</a>
-                        
-                    </div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading text-center">
+                    <h1>archives</h1>
+                    <span class="subheading">可以根据归档日期检索所有文件</span>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="post-title-haojen">
-        <span>
-            （四）OpenWrt--编译环境搭建
-        </span>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h2><p>OpenWrt是一个针对嵌入式设备的Linux发行版。OpenWrt提供了非常方便的开发环境，使用流行的Linux操作系统Ubuntu即可搭建好编译环境。你可以直接选择直接在电脑上安装Unbuntu，如果你不想折腾，也可以选择在虚拟机下运行Ubuntu。Ubuntu可以去<a href="https://www.ubuntu.com/index_kylin" target="_blank" rel="noopener">Ubuntu官网</a>进行下载，具体的安装过程可以自行百度。<br>如果你选择在虚拟机下安装了Ubuntu，为了方便虚拟机和主机之间传递内容和文件，我们可以在虚拟机和主机之间创建一个共享文件夹。<a href="https://jingyan.baidu.com/article/6b1823095583c1ba58e159a8.html" target="_blank" rel="noopener">具体教程</a>。创建完成后，Ubuntu的共享文件会在/mnt/hgfs下。  </p>
-<h2 id="编译工具"><a href="#编译工具" class="headerlink" title="编译工具"></a>编译工具</h2><p>Ubuntu采用APT（Advanced Packaging Tool）来管理软件安装、更新、升级及删除等。APT系统的配置文件为/etc/apt/sources.list目录。由于Ubuntu默认服务器是国外的，所以为了防止下载速度较慢，我们需要修改sources.list文件中的服务器地址。为了防止修改错误，修改之前请先做好备份。国内的镜像源可自行选择，如：网易、阿里云等。<br>在修改完镜像源之后需要输入以下命令进行更行： </p>
-<pre><code>sudo apt-get update  
-</code></pre><p>OpenWrt选择了一种自动化的方式来生成固件：编译环境检查、生成交叉编译链、下载代码包、打补丁、编译及生成固件。所以，我们需要安装编译工具，安装命令如下：  </p>
-<pre><code>sudo apt-get install subvertion g++ flex patch libncurses5-dev zlib1g-dev git-core libssl-dev gawk xz-util 
-</code></pre><p>如果你怕没有安装成功，你也可以一个一个分开安装。  </p>
-<blockquote>
-<ol>
-<li><p>Subversion是一个版本管理系统，可以跟踪文件和目录的历史信息，包含了4个W(Who、When、Why和What)，即谁做了修改、何时做了修改、为什么修改以及修改的内容。它像CVS一样保存数据源的单份复制，称为仓库，仓科包含了项目中文件的所有历史信息。 </p>
-</li>
-<li><p>g++是GUN工程的C/C++编译工具，用于将C语言及C++语言编译为动态链接库或二进制可执行程序。它对代码进行预处理、编译、汇编和链接。通过命令选项可以控制整个编译过程。</p>
-</li>
-<li><p>FLEX（The Fast Lexical Analyzer）一个快速词法分析工具。</p>
-</li>
-<li><p>patch是将diff文件应用到原始文件的工具，用于在程序开发过程中提交代码，是应用差异文件的工具。这些差异文件由diff程序执行产生。</p>
-</li>
-<li><p>libncurses5-dev用于屏幕终端控制。这个包中包括运行那些使用ncurses编译的程序所必须的共享库，同样包含开发使用的头文件、静态库和开发使用的链接文件、文档等。  </p>
-</li>
-<li><p>zlib1g-dev是压缩及解压缩开发库。包含头文件、静态库、开发示例和文档等。  </p>
-</li>
-<li><p>git-core是设计用于大型工程的分布式版本管理工具，是另外一种代码管理工具软件。它的每一个仓库都完全保存了整个代码历史，可以脱离网络使用，首先应用于Linux社区。</p>
-</li>
-<li><p>libssl-dev是openssl开发库，用于加密解密、计算哈希和数据签名等。</p>
-</li>
-<li><p>gawk是GUN工程实现的AWK语言工具，是文本模式扫描和处理的工具。</p>
-</li>
-<li><p>xz-util是xz格式的压缩工具。它有非常高的压缩比，并且更快更容易解压缩。</p>
-</li>
-</ol>
-</blockquote>
-
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2018/01/04/蓝牙技术简述/" data-toggle="tooltip" data-placement="top"
-                           title="蓝牙技术简述">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2017/12/20/诺基亚百年沉浮史3/" data-toggle="tooltip" data-placement="top"
-                           title="诺基亚百年沉浮史（三）">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-
-
-                <!--加入新的评论系统-->
-                
-                <!-- 来必力City版安装代码 -->
-                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
-                        <script type="text/javascript">
-                    (function(d, s) {
-                        var j, e = d.getElementsByTagName(s)[0];
-
-                        if (typeof LivereTower === 'function') { return; }
-
-                        j = d.createElement(s);
-                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                        j.async = true;
-
-                        e.parentNode.insertBefore(j, e);
-                    })(document, 'script');
-                        </script>
-                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-                    </div>
-                    <!-- City版安装代码已完成 -->
-                
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu安装"><span class="toc-text"><a href="#Ubuntu&#x5B89;&#x88C5;" class="headerlink" title="Ubuntu&#x5B89;&#x88C5;"></a>Ubuntu&#x5B89;&#x88C5;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译工具"><span class="toc-text"><a href="#&#x7F16;&#x8BD1;&#x5DE5;&#x5177;" class="headerlink" title="&#x7F16;&#x8BD1;&#x5DE5;&#x5177;"></a>&#x7F16;&#x8BD1;&#x5DE5;&#x5177;</span></a></li></ol>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- archive list -->
+            
+				
+				
+				
+					
+					
+					<div class="archive archive-year" data-date="2018">
+						<h2 class="archive-title">
+						<span class="fa fa-archive">
+							<a href="/archives/2018">2018</a>
+						</span>
+						</h2>
+				
+				
+					
+					
+					<div class="archive archive-month" data-date="201801">
+						<h3 class="archive-title">
+							<a href="/archives/2018/01">01</a>
+						</h3>
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2018/01/04/蓝牙技术简述/">
+                        <h4 class="post-title">
+                            蓝牙技术简述
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            如果有所谓的太贫穷，不过是不敢再做梦。
+                        </h4>
+                        
+                    </a>
                 </div>
-            </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2018/01/04/编译准备/">
+                        <h4 class="post-title">
+                            （四）OpenWrt--编译环境搭建
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            一般来说，“你已经很棒了”意思是“你并不是很棒”。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+					
+					</div><!--month-->
+					</div><!--year-->
+					
+					
+					
+					<div class="archive archive-year" data-date="2017">
+						<h2 class="archive-title">
+						<span class="fa fa-archive">
+							<a href="/archives/2017">2017</a>
+						</span>
+						</h2>
+				
+				
+					
+					
+					<div class="archive archive-month" data-date="201712">
+						<h3 class="archive-title">
+							<a href="/archives/2017/12">12</a>
+						</h3>
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/20/诺基亚百年沉浮史3/">
+                        <h4 class="post-title">
+                            诺基亚百年沉浮史（三）
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            不管事情变得多坏，在不远的地方，相信总会有一些美好即将来临。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/19/诺基亚百年沉浮史2/">
+                        <h4 class="post-title">
+                            诺基亚百年沉浮史（二）
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            如果你相信自己，然后再加上一点点运气，那你所有梦想就都能实现。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/18/诺基亚百年沉浮史1/">
+                        <h4 class="post-title">
+                            诺基亚百年沉浮史（一）
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            不忘初心，方得始终。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/17/路由器的硬件组成/">
+                        <h4 class="post-title">
+                            （三）OpenWrt--路由板的硬件组成
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            相似的人适合一起欢闹，互补的人适合一起变老。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/16/路由板选型/">
+                        <h4 class="post-title">
+                            （二）OpenWrt--开发板选型
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            有时候，我们追寻更多的东西时候，却忘了我们已经拥有的一切。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/16/OpenWrt概述/">
+                        <h4 class="post-title">
+                            （一）OpenWrt--概述
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            我们一直在寻觅，寻觅，那个我们都有的结局。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/12/14/开关电源的基本原理及分类/">
+                        <h4 class="post-title">
+                            （一）开关电源--基本原理及分类
+                        </h4>
+                        
+                        <h4 class="post-subtitle">
+                            世界上最强大的人，就是那些能一个人孤单生活的人。
+                        </h4>
+                        
+                    </a>
+                </div>
+				<hr>
+				</div>
+            
         </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5 class="text-center">
-                        <a href="/tags/">FEATURED TAGS</a>
-                    </h5>
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/#OpenWrt"
-                           title="OpenWrt">OpenWrt</a>
-                        
-                        <a class="tag" href="/tags/#嵌入式"
-                           title="嵌入式">嵌入式</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
-
     </div>
-</article>
-
-
-
-
-
-
 
 <!-- Footer -->
 <!-- Footer -->

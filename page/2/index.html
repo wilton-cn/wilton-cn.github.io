@@ -22,7 +22,7 @@
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/archives/2017/12/">
+    <link rel="canonical" href="http:wilton-cn.github.io/page/2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
-" data-ishome = "false" >
+" data-ishome = "true" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -141,255 +141,312 @@
 </script>
 
 <!-- Main Content -->
+
+
 <style>
-    .intro-header .site-heading {
-        margin: 50px;
+
+    .custom-haojen-container .post-preview:nth-of-type(1),
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        text-align: center;
+        background-repeat: no-repeat;
+        border-radius: 3px;
+        background-size: cover;
+        padding: 0;
+        height: 300px;
+        display: table;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.16);
     }
-    
-    header.intro-header {
-        background-image: url('http://olq5mp7jp.bkt.clouddn.com/bg.jpg')
+
+    /*去掉诗歌的背景图片*/
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) {
+        background-image: none !important;
+        background-color: rgba(255, 248, 220, 0.5);
     }
-    
+
+    .custom-haojen-container .post-preview:nth-child(1) h2,
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta,
+    .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+        text-shadow: 0 0 40px rgba(0, 0, 0, 1);
+        letter-spacing: 1px;
+        color: #fff;
+        margin-top: 0;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .custom-haojen-container .post-preview:nth-child(1) .post-meta {
+        font-size: .9em;
+        font-weight: 300;
+        margin-top: 0;
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle {
+        letter-spacing: 6px;
+        font-size: 18px;
+        font-family: unset;
+        font-weight: 400;
+        color: rgba(0, 0, 0, .75)
+    }
+
+    /*不显示摘要*/
+    .custom-haojen-container .post-preview:nth-child(1) .post-content-preview {
+        display: none
+    }
+
+    /*只第一个显示背景图片*/
+    .custom-haojen-container .post-preview:not(:nth-child(1)) {
+        background-image: none !important;
+    }
+
+    /*第一个分界线去掉*/
+    .custom-haojen-container hr:nth-of-type(1) {
+        display: none;
+    }
+
+    /*主题*/
+    .custom-haojen-container .post-preview:nth-of-type(1) > a {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    /*诗词标题*/
+    .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+        font-size: 35px;
+        font-family: STKaiti;
+        color: rgba(0, 0, 0, .8);
+    }
+
+    .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta {
+        color: #0e2231;
+    }
+
+    @media (max-width: 768px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 240px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 28px !important;
+            margin-top: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .custom-haojen-container .post-preview:nth-of-type(1) > a {
+            padding: 20px
+        }
+    }
+
+    /*手机屏幕*/
+    @media (max-width: 400px) {
+        .custom-haojen-container .post-preview:nth-child(1) {
+            height: 195px;
+        }
+
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2 {
+            font-size: 20px !important;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            font-size: 16px;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) a {
+            padding: 30px 20px;
+        }
+    }
 </style>
 
 <!-- Page Header -->
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
                 <div class="site-heading text-center">
-                    <h1>archives</h1>
-                    <span class="subheading">可以根据归档日期检索所有文件</span>
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg"/>
+                        <h5><a href="/about/">wilton</a></h5>
+                        <p>To be a better man!</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
     </div>
-</header>
-
+</div>
 <!-- Main Content -->
-<div class="container">
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- archive list -->
-            
-				
-				
-				
-					
-					
-					<div class="archive archive-year" data-date="2018">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2018">2018</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201801">
-						<h3 class="archive-title">
-							<a href="/archives/2018/01">01</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/01/04/蓝牙技术简述/">
-                        <h4 class="post-title">
-                            蓝牙技术简述
-                        </h4>
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview  "
+     style="background-image: url('http://p0uu80tg9.bkt.clouddn.com/a1.jpg')">
+    <a href="/2017/12/14/开关电源的基本原理及分类/">
+        <h2 class="post-title">
+            （一）开关电源--基本原理及分类
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2017-12-14
+        </p>
+        
+        <h3 class="post-subtitle">
+            世界上最强大的人，就是那些能一个人孤单生活的人。
+        </h3>
+        
+        <div class="post-content-preview">
+            <p>
+                开关电源的基本定义开关电源就是利用电子开关器件（如晶体管、场效应管和可控硅流闸流管等），通过控制电路，使电子开关器件不停地“接通”和“关断”，让电子开关器件对输入电压进行脉冲调制，从而实现DC/AC、DC/DC电压变换，以及输出电压可调和自动稳压。
+几种基本类型的开关电压工作模式：1、频率、脉冲..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/">&larr; Newer Posts</a>
+    </li>
+    
+    
+</ul>
+
+
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <img src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg"/>
+                    
+                    <h5><a href="/about/">wilton</a></h5>
+                    
+                    <p>To be a better man!</p>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
                         
-                        <h4 class="post-subtitle">
-                            如果有所谓的太贫穷，不过是不敢再做梦。
-                        </h4>
                         
-                    </a>
+                        <li>
+                            <a target="_blank" href="https://twitter.com/wilton_cn">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a target="_blank" href="https://www.zhihu.com/people/wang-tao-56-88-15">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="http://weibo.com/5219130828">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+
+                        
+                        <li>
+                            <a target="_blank" href="https://github.com/wilton-cn">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                            </a>
+                        </li>
+                        
+
+                        
+                    </ul>
                 </div>
-				<hr>
-				</div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
             
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/01/04/编译准备/">
-                        <h4 class="post-title">
-                            （四）OpenWrt--编译环境搭建
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            一般来说，“你已经很棒了”意思是“你并不是很棒”。
-                        </h4>
-                        
-                    </a>
+            <section>
+                <div class="tags">
+                    
+                    
+                    <a href="/tags/#OpenWrt" title="OpenWrt"
+                       rel="4">OpenWrt</a>
+                    
+                    
+                    
+                    <a href="/tags/#嵌入式" title="嵌入式"
+                       rel="4">嵌入式</a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/tags/#IT" title="IT"
+                       rel="3">IT</a>
+                    
+                    
+                    
+                    <a href="/tags/#Nokia" title="Nokia"
+                       rel="3">Nokia</a>
+                    
+                    
                 </div>
-				<hr>
-				</div>
+            </section>
             
-				
-				
-				
-					
-					</div><!--month-->
-					</div><!--year-->
-					
-					
-					
-					<div class="archive archive-year" data-date="2017">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2017">2017</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201712">
-						<h3 class="archive-title">
-							<a href="/archives/2017/12">12</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/20/诺基亚百年沉浮史3/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（三）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            不管事情变得多坏，在不远的地方，相信总会有一些美好即将来临。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
+
             
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/19/诺基亚百年沉浮史2/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（二）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            如果你相信自己，然后再加上一点点运气，那你所有梦想就都能实现。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/18/诺基亚百年沉浮史1/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（一）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            不忘初心，方得始终。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/17/路由器的硬件组成/">
-                        <h4 class="post-title">
-                            （三）OpenWrt--路由板的硬件组成
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            相似的人适合一起欢闹，互补的人适合一起变老。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/16/路由板选型/">
-                        <h4 class="post-title">
-                            （二）OpenWrt--开发板选型
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            有时候，我们追寻更多的东西时候，却忘了我们已经拥有的一切。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/16/OpenWrt概述/">
-                        <h4 class="post-title">
-                            （一）OpenWrt--概述
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            我们一直在寻觅，寻觅，那个我们都有的结局。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/14/开关电源的基本原理及分类/">
-                        <h4 class="post-title">
-                            （一）开关电源--基本原理及分类
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            世界上最强大的人，就是那些能一个人孤单生活的人。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
+
         </div>
     </div>
+</div>
 
 <!-- Footer -->
 <!-- Footer -->

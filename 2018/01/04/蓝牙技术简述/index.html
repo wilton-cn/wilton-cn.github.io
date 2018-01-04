@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="王涛在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+    <link rel="alternate" type="application/atom+xml" title="wilton" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        蓝牙技术简述｜wilton&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http:wilton-cn.github.io/2018/01/04/蓝牙技术简述/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/mobil.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    wilton
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+								
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archive/">archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+						<li>
+							<a href="/about">About</a>
+						</li>
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src="http://p0uu80tg9.bkt.clouddn.com/w1.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://p0uu80tg9.bkt.clouddn.com/w1.jpg');
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>蓝牙技术简述</h1>
+                    
+                    <h2 class="subheading">如果有所谓的太贫穷，不过是不敢再做梦。</h2>
+                    
+                    <span class="meta">
+                         作者 wilton
+                        <span>
+                          日期 2018-01-04
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#无线通信"
+                           title="无线通信">无线通信</a>
+                        
+                        <a class="tag" href="/tags/#蓝牙"
+                           title="蓝牙">蓝牙</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            蓝牙技术简述
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="蓝牙的定义"><a href="#蓝牙的定义" class="headerlink" title="蓝牙的定义"></a>蓝牙的定义</h2><p>蓝牙是从英文Bluetooth单词直译而来，是一种尖端的开放式无线通讯标准，能够实现短距离内的电子设备的数据交换。<br>蓝牙一词源于一个小故事。公元940-985年，哈罗德·布美塔特（Harald Blatand）,后人称为Harald Bluetooth，统一了整个丹麦。和许多君王一样，哈罗德四处扩张，为政治、经济和荣誉而战。公元960年哈罗德达到了他权力的最高点，征服了整个丹麦和挪威。而蓝牙是这个丹麦国王的绰号，因为他爱吃蓝莓，牙齿被染蓝，因此得这一绰号。<br>在行业协会筹备阶段，需要一个极具有表现力的名字来命名这项高新技术。行业组织人员经过一夜关于欧洲历史和未来无线技术发展的讨论后，有些人认为用Blatand国王的名字再合适不过了。Blatand国王将挪威、瑞典和丹麦统一起来，他的口齿伶俐，善于交际，就如同即将面世的技术，被定义为允许不同工业领域之间的协调工作，保持者各个领域之间的良好交流。  </p>
+<h2 id="蓝牙的产生与发展"><a href="#蓝牙的产生与发展" class="headerlink" title="蓝牙的产生与发展"></a>蓝牙的产生与发展</h2><p>对于移动电话及其附件间无线连接的研究是由爱立信公司在1994年开始的，直到四年后由爱立信、IBM、诺基亚和东芝等公司成立蓝牙特殊利益集团（Special Interest Group，SIG）后，这种概念才开始不仅应用于移动电话，而且也开始用于PC和其他设备的连接。<br>1999年7月，蓝牙SIG正式公布了蓝牙1.0版本规范，将蓝牙的发展推进到实用化阶段。同年，IEEE 802.15工作组成立，其任务是开发WPAN标准。之后，蓝牙SIG称为唯一相应WG 15的组织，蓝牙和IEEE 8.15.1不久后成了同一个概念。随后，版本不断更新，距离和速度等也随之提升。  </p>
+<h3 id="1-1版本"><a href="#1-1版本" class="headerlink" title="1.1版本"></a>1.1版本</h3><blockquote>
+<ul>
+<li>2002年获批为IEEE 802.15.1标准。</li>
+<li>1.0中的许多错误得以修正。</li>
+<li>添加了未加密通道的可能性。</li>
+</ul>
+</blockquote>
+<h3 id="1-2版本"><a href="#1-2版本" class="headerlink" title="1.2版本"></a>1.2版本</h3><blockquote>
+<ul>
+<li>2005年获批为IEEE 802.15.1标准。</li>
+<li>自适应跳频(AFH)</li>
+<li>更快的连接和发现。</li>
+<li>传输速率高达721kbit/s。</li>
+</ul>
+</blockquote>
+<h3 id="2-0-EDR版本"><a href="#2-0-EDR版本" class="headerlink" title="2.0 + EDR版本"></a>2.0 + EDR版本</h3><blockquote>
+<ul>
+<li>核心版本发布于2004年。</li>
+<li>增强数据率（EDR）的推出，能够实现更快的数据传输。</li>
+<li>实际传输速率可达2.1Mbit/s。</li>
+<li>EDR可通过减少工作周期提供更低的功耗。</li>
+</ul>
+</blockquote>
+<h3 id="2-1-EDR版本"><a href="#2-1-EDR版本" class="headerlink" title="2.1 + EDR版本"></a>2.1 + EDR版本</h3><blockquote>
+<ul>
+<li>核心规范由蓝牙技术联盟于2007年7月26日推出。</li>
+<li>安全简易配对（SSP），它为蓝牙提高了配对体验，同时提升了安全性的实际应用和强度。  </li>
+</ul>
+</blockquote>
+<h3 id="3-0-HS版本"><a href="#3-0-HS版本" class="headerlink" title="3.0 + HS版本"></a>3.0 + HS版本</h3><blockquote>
+<ul>
+<li>核心规范由蓝牙技术联盟在2009年4月21日推出。</li>
+<li>理论传输速率可高达24Mbit/s。</li>
+<li>新增了L2CAP增强模式、AIternative MAC/PHY、单向广播无连接数据、增强型电源控制、超宽频等特性。</li>
+</ul>
+</blockquote>
+<h3 id="4-0版本"><a href="#4-0版本" class="headerlink" title="4.0版本"></a>4.0版本</h3><blockquote>
+<ul>
+<li>由蓝牙技术联盟于2010年6月30日提出。</li>
+<li>包含经典蓝牙、高速蓝牙和蓝牙低功耗协议。</li>
+<li>对音频主机控制器接口和高速协议适配层改进。</li>
+</ul>
+</blockquote>
+<h3 id="4-1版本"><a href="#4-1版本" class="headerlink" title="4.1版本"></a>4.1版本</h3><blockquote>
+<ul>
+<li>移动无线服务共存信号。</li>
+<li>低占空比定向广播。</li>
+<li>宽带语音的音频架构更新。</li>
+<li>有限的发现时间。</li>
+</ul>
+</blockquote>
+<h3 id="4-2版本"><a href="#4-2版本" class="headerlink" title="4.2版本"></a>4.2版本</h3><blockquote>
+<ul>
+<li>发布于2014年12月2日。</li>
+<li>低功耗数据包长度延展。</li>
+<li>低功耗安全连接。</li>
+<li>链路层隐私权限。</li>
+<li>链路层延展的扫描过滤策略。</li>
+</ul>
+</blockquote>
+<h2 id="蓝牙技术的特点"><a href="#蓝牙技术的特点" class="headerlink" title="蓝牙技术的特点"></a>蓝牙技术的特点</h2><p>蓝牙技术提供低成本、近距离的无线通信，构成固定于移动设备环境中的个人网络，使得近距离内各种设备能够实现无缝资源共享。显然，这种通信技术于传统的个人网络由明显的区别。它的初衷是希望以相同成本和安全性实现一般电缆的功能，从而使移动用户摆脱电缆束缚。因此，蓝牙技术具有以下特点：  </p>
+<h3 id="语音和数据传输"><a href="#语音和数据传输" class="headerlink" title="语音和数据传输"></a>语音和数据传输</h3><p>蓝牙技术定义了<strong>电路交换</strong>和<strong>分组交换</strong>的数据传输类型，能够同时支持语音于数据信息的传输。目前电话网络的语音通话属于电路交换类型，发话者于受话者之间建立起一条专门的连线。网络上的数据传输则属于分组交换类型。分组交换是将数据切割成具有地址标记的分组数据包后通过多条共享通道发送出去。<br>蓝牙技术支持电路交换和分组交换，即能同时传输语音和数据信息。蓝牙定义了2种链路类型：SOC（面向连接的同步链路）和ACL（面向无连接的异步链路）。每种链路支持16种不同的分组类型。SCO数据包既可以支持数据传送，也可以支持语音传送。语音编码方式采用PCM或CVSD（连续可变斜率增量调制），由用户选择。ACL支持对成和非对称两种格式，ACL和SCO可以同时工作，这意味这语音和数据可以同时被传送。  </p>
+<h3 id="使用全球通用的频段"><a href="#使用全球通用的频段" class="headerlink" title="使用全球通用的频段"></a>使用全球通用的频段</h3><p>要使通信产品快速地普及，必须使通信频段位于全球各个国家开放的频段上。蓝牙技术工作在全球通用的2.4GHz频段，即ISM频段。ISM频段是指用于工业、科学和医学的全球公用频段，它包含902~928MHz和2.4~2.484GHz两个频段范围，可以免费使用而不用申请。蓝牙技术采用PLUG&amp;PLAY功能，可以解释为“即插即用”，即任何具有蓝牙功能的设备一旦搜索到另一个具有蓝牙功能的设备可以立即建立连接，而用户无须进行任何设置。<br>ISM频段是对所有无线电系统都开放的频段，为了避免与此频段上的其他系统或设备（如无线电话、微波炉等）互相干扰，蓝牙系统还特别设计了快速确认和跳频方案，以确保链路的稳定性。跳频技术是把频带分成若干个调频信道，在一次连接中，无线电收发器按一定的伪随机编码序列快速从一个信道跳到另一个信道，只收发双方按这个规律通信，而其他的干扰源不会按同样的规律变频。跳频的瞬时带宽很窄，但通过宽展频谱技术可使这个窄频带宽展成宽频带，使可能产生干扰的影响降低。与其他工作在相同频段的系统相比，蓝牙跳频更快，数据包更短，更稳定。</p>
+<h3 id="低成本、低功耗和低辐射"><a href="#低成本、低功耗和低辐射" class="headerlink" title="低成本、低功耗和低辐射"></a>低成本、低功耗和低辐射</h3><p>将蓝牙看作一个短距离通信系统，目前它的成本不算高。如果将其视为一个无线电缆，则价格仍然不低，但长期目标锁定在5美元以下。为了能够替代一般电缆，蓝牙芯片价格必须达到这个目标，这样才能具备和一般电缆差不多的价格，从而被广大普通消费者所接受，使这项技术得到普及。目前，蓝牙芯片价格降不下来既有经济原因，也有技术原因。从技术角度来看，蓝牙芯片集成了无线、基带和链路管理功能。如果由软件实现链路管理层功能，那么芯片被简化，价格也将趋于合理。而从经济角度来看，蓝牙芯片的大批量生产无疑将摊薄成本，降低价格。<br>蓝牙芯片的发射功率能够根据使用模式自动调节，正常工作时的发射功率为1mW，发射距离一般为10m。蓝牙规范定义了三种节能状态：Park、Hold和Sniff。这些状态既能处于低功率状态，也能处理连接状态。但传输信息减少或无数据传输时，蓝颜设备将减少处于激活状态的时间；而进入低功率工作模式，这种模式比正常工作模式约节省70%的发射功率。也正是由于蓝牙设备的发射功率很小，通信过程中产生的无线辐射完全符合工业标准，不会危害使用蓝牙设备的用户或进入蓝牙有效通信范围内的人们。目前蓝牙的最大发射距离通常可以达到100m，基本可以满足常见的短距离无线通信的需求。</p>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>蓝牙系统的安全问题一直是深受关注的，因为蓝牙的移动性与开放性使得安全问题极为重要。同其他无线信号一样，蓝牙信号很容易被截取。因此蓝牙协议提供了认证和加密，以实现链路级安全。蓝牙系统认证与加密服务由物理层提供，采用流密码加密技术，适于硬件实现，密钥由高层软件管理。如果用户有更高级别的保密要求，可以使用更高级、更有效的传输层和应用层安全机制。<br>安全措施不仅在确保消息和文件以无线方式进行传递时的隐私方面很重要，而且电子商务合同的诚实性方面也很重要。相应地，蓝牙标准也提供了灵活的安全体系结构，既能确保访问可信任的设备和业务，而又不对其他不可信设备和服务提供访问权限。除此之外，跳频技术保密性和蓝牙有限的传输范围也使窃听变得困难。  </p>
+<h3 id="网络特性"><a href="#网络特性" class="headerlink" title="网络特性"></a>网络特性</h3><p>蓝牙技术是一种点对多点的通信协议，蓝牙设备间的数据传输不仅能够点对点，也支持点对多点的方式。蓝牙组网时最多可以有256个蓝牙单元设备连接形成微微网，其中1个主节点和7个从节点处于工作状态，其他处于空闲模式。多个微微网可以组成发散网。换句话说，一个蓝牙设备最多可以同时连接另外7个蓝牙设备，周围最多可有255个待机的蓝牙设备（处于standby状态）。利用蓝牙技术可将个人身边的设备都连接起来，形成一个个人局域网。</p>
+<h2 id="蓝牙主要技术指标和系统参数"><a href="#蓝牙主要技术指标和系统参数" class="headerlink" title="蓝牙主要技术指标和系统参数"></a>蓝牙主要技术指标和系统参数</h2><table>
+<thead>
+<tr>
+<th>指标类型</th>
+<th style="text-align:left"><center>系统参数</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作频段</td>
+<td style="text-align:left">ISM频段，2.402~2.480GHz</td>
+</tr>
+<tr>
+<td>双工方式</td>
+<td style="text-align:left">全双工，TDD时分双工</td>
+</tr>
+<tr>
+<td>业务类型</td>
+<td style="text-align:left">支持电路交换和分组交换业务</td>
+</tr>
+<tr>
+<td>数据速率</td>
+<td style="text-align:left">最高可达24Mbit/s</td>
+</tr>
+<tr>
+<td>功率</td>
+<td style="text-align:left">美国FCC要求功率级 &lt; 0dBm(1 mW)，其他国家可扩展为100mW</td>
+</tr>
+<tr>
+<td>调频频率数</td>
+<td style="text-align:left">79个跳频点/1 MHz</td>
+</tr>
+<tr>
+<td>调频速率</td>
+<td style="text-align:left">1600次/秒</td>
+</tr>
+<tr>
+<td>工作模式</td>
+<td style="text-align:left">PARK/HOLD/SNIFF</td>
+</tr>
+<tr>
+<td>数据连接方式</td>
+<td style="text-align:left">面向连接业务SCO，无线连接业务ACL</td>
+</tr>
+<tr>
+<td>纠错方式</td>
+<td style="text-align:left">1/3FEC，2/3FEC，ARQ等</td>
+</tr>
+<tr>
+<td>信道加密</td>
+<td style="text-align:left">采用0位，40位和60位密钥</td>
+</tr>
+<tr>
+<td>发射距离</td>
+<td style="text-align:left">一般可达10cm~10m，增加功率情况下可达100m</td>
+</tr>
+</tbody>
+</table>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/01/04/编译准备/" data-toggle="tooltip" data-placement="top"
+                           title="（四）OpenWrt--编译环境搭建">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
+                        <script type="text/javascript">
+                    (function(d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                        </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#蓝牙的定义"><span class="toc-text"><a href="#&#x84DD;&#x7259;&#x7684;&#x5B9A;&#x4E49;" class="headerlink" title="&#x84DD;&#x7259;&#x7684;&#x5B9A;&#x4E49;"></a>&#x84DD;&#x7259;&#x7684;&#x5B9A;&#x4E49;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#蓝牙的产生与发展"><span class="toc-text"><a href="#&#x84DD;&#x7259;&#x7684;&#x4EA7;&#x751F;&#x4E0E;&#x53D1;&#x5C55;" class="headerlink" title="&#x84DD;&#x7259;&#x7684;&#x4EA7;&#x751F;&#x4E0E;&#x53D1;&#x5C55;"></a>&#x84DD;&#x7259;&#x7684;&#x4EA7;&#x751F;&#x4E0E;&#x53D1;&#x5C55;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1版本"><span class="toc-text"><a href="#1-1&#x7248;&#x672C;" class="headerlink" title="1.1&#x7248;&#x672C;"></a>1.1&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2版本"><span class="toc-text"><a href="#1-2&#x7248;&#x672C;" class="headerlink" title="1.2&#x7248;&#x672C;"></a>1.2&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-0-EDR版本"><span class="toc-text"><a href="#2-0-EDR&#x7248;&#x672C;" class="headerlink" title="2.0 + EDR&#x7248;&#x672C;"></a>2.0 + EDR&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-EDR版本"><span class="toc-text"><a href="#2-1-EDR&#x7248;&#x672C;" class="headerlink" title="2.1 + EDR&#x7248;&#x672C;"></a>2.1 + EDR&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-0-HS版本"><span class="toc-text"><a href="#3-0-HS&#x7248;&#x672C;" class="headerlink" title="3.0 + HS&#x7248;&#x672C;"></a>3.0 + HS&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-0版本"><span class="toc-text"><a href="#4-0&#x7248;&#x672C;" class="headerlink" title="4.0&#x7248;&#x672C;"></a>4.0&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1版本"><span class="toc-text"><a href="#4-1&#x7248;&#x672C;" class="headerlink" title="4.1&#x7248;&#x672C;"></a>4.1&#x7248;&#x672C;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2版本"><span class="toc-text"><a href="#4-2&#x7248;&#x672C;" class="headerlink" title="4.2&#x7248;&#x672C;"></a>4.2&#x7248;&#x672C;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#蓝牙技术的特点"><span class="toc-text"><a href="#&#x84DD;&#x7259;&#x6280;&#x672F;&#x7684;&#x7279;&#x70B9;" class="headerlink" title="&#x84DD;&#x7259;&#x6280;&#x672F;&#x7684;&#x7279;&#x70B9;"></a>&#x84DD;&#x7259;&#x6280;&#x672F;&#x7684;&#x7279;&#x70B9;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语音和数据传输"><span class="toc-text"><a href="#&#x8BED;&#x97F3;&#x548C;&#x6570;&#x636E;&#x4F20;&#x8F93;" class="headerlink" title="&#x8BED;&#x97F3;&#x548C;&#x6570;&#x636E;&#x4F20;&#x8F93;"></a>&#x8BED;&#x97F3;&#x548C;&#x6570;&#x636E;&#x4F20;&#x8F93;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用全球通用的频段"><span class="toc-text"><a href="#&#x4F7F;&#x7528;&#x5168;&#x7403;&#x901A;&#x7528;&#x7684;&#x9891;&#x6BB5;" class="headerlink" title="&#x4F7F;&#x7528;&#x5168;&#x7403;&#x901A;&#x7528;&#x7684;&#x9891;&#x6BB5;"></a>&#x4F7F;&#x7528;&#x5168;&#x7403;&#x901A;&#x7528;&#x7684;&#x9891;&#x6BB5;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#低成本、低功耗和低辐射"><span class="toc-text"><a href="#&#x4F4E;&#x6210;&#x672C;&#x3001;&#x4F4E;&#x529F;&#x8017;&#x548C;&#x4F4E;&#x8F90;&#x5C04;" class="headerlink" title="&#x4F4E;&#x6210;&#x672C;&#x3001;&#x4F4E;&#x529F;&#x8017;&#x548C;&#x4F4E;&#x8F90;&#x5C04;"></a>&#x4F4E;&#x6210;&#x672C;&#x3001;&#x4F4E;&#x529F;&#x8017;&#x548C;&#x4F4E;&#x8F90;&#x5C04;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安全性"><span class="toc-text"><a href="#&#x5B89;&#x5168;&#x6027;" class="headerlink" title="&#x5B89;&#x5168;&#x6027;"></a>&#x5B89;&#x5168;&#x6027;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络特性"><span class="toc-text"><a href="#&#x7F51;&#x7EDC;&#x7279;&#x6027;" class="headerlink" title="&#x7F51;&#x7EDC;&#x7279;&#x6027;"></a>&#x7F51;&#x7EDC;&#x7279;&#x6027;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#蓝牙主要技术指标和系统参数"><span class="toc-text"><a href="#&#x84DD;&#x7259;&#x4E3B;&#x8981;&#x6280;&#x672F;&#x6307;&#x6807;&#x548C;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;" class="headerlink" title="&#x84DD;&#x7259;&#x4E3B;&#x8981;&#x6280;&#x672F;&#x6307;&#x6807;&#x548C;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;"></a>&#x84DD;&#x7259;&#x4E3B;&#x8981;&#x6280;&#x672F;&#x6307;&#x6807;&#x548C;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#无线通信"
+                           title="无线通信">无线通信</a>
+                        
+                        <a class="tag" href="/tags/#蓝牙"
+                           title="蓝牙">蓝牙</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/wilton_cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/wang-tao-56-88-15">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5219130828">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wilton-cn">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; wilton 2018
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Power by <a href="https://hexo.io//"> Hexo </a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http:wilton-cn.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = 'fe54cfdb47c7afe1bd4d9a1986637766';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/wilton.jpg">
+</body>
+
+</html>
