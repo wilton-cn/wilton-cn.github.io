@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        wilton&#39;s blog
+        Github+Hexo搭建个人Blog(一)｜wilton&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/archives/2017/12/">
+    <link rel="canonical" href="http:wilton-cn.github.io/2018/05/08/Hexo搭建Blog/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -141,304 +141,188 @@
 </script>
 
 <!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/201805082141.jpg">
+
+
 <style>
-    .intro-header .site-heading {
-        margin: 50px;
-    }
     
     header.intro-header {
-        background-image: url('http://olq5mp7jp.bkt.clouddn.com/bg.jpg')
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/201805082141.jpg');
     }
+
     
 </style>
 
-<!-- Page Header -->
 <header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading text-center">
-                    <h1>archives</h1>
-                    <span class="subheading">可以根据归档日期检索所有文件</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Github+Hexo搭建个人Blog(一)</h1>
+                    
+                    <h2 class="subheading">布衣桑饭，可乐终身。</h2>
+                    
+                    <span class="meta">
+                         作者 wilton
+                        <span>
+                          日期 2018-05-08
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#blog搭建"
+                           title="blog搭建">blog搭建</a>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="post-title-haojen">
+        <span>
+            Github+Hexo搭建个人Blog(一)
+        </span>
+    </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- archive list -->
-            
-				
-				
-				
-					
-					
-					<div class="archive archive-year" data-date="2018">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2018">2018</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201805">
-						<h3 class="archive-title">
-							<a href="/archives/2018/05">05</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/05/08/Hexo搭建Blog/">
-                        <h4 class="post-title">
-                            Github+Hexo搭建个人Blog(一)
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            布衣桑饭，可乐终身。
-                        </h4>
-                        
-                    </a>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直希望拥有完全属于自己的博客，一方面可以做笔记，记录个人成长，同时也可以写写随笔，当作一个小小的精神家园。虽然网上有很多类似简书、CSDN博客园等个人博客网站，但是页面样式个人不是很喜欢，同时还会在你的个人页面插入许多广告，让人反感。于是之前我就租了一个云服务器，搭建了一个基于wordpress的个人博客。但是其费用成本较大，后来到期后就干脆放弃了。后来在网上发现用Github+Hexo可以搭建，方便简洁，重要的是完全免费。好了，言归正传。接下来，让我一步一步教大家搭建一个自己的Blog。    </p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><strong>Github账号</strong><br>用作博客的远程仓库、域名和服务器等。<a href="https://github.com/" target="_blank" rel="noopener">Github官网</a>  </p>
+<p><strong>Git</strong><br>用于将本地的Hexo内容提交到Github上。为了方便操作，这里我用了Git Bush。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a>  </p>
+<blockquote>
+<p>gitbush安装完成后，打开gitbush，运行<code>git version</code>命令可以查看其版本。</p>
+</blockquote>
+<p><img src="http://olq5mp7jp.bkt.clouddn.com/2018050822351.png" alt="gitbush版本"></p>
+<p><strong>Node</strong><br>用于生成静态页面。<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js官网</a><br>除在官网下载安装包安装node外，也可以在gitbush上进行安装。</p>
+<blockquote>
+<p>在gitbush中运行以下下命令行：  </p>
+<ul>
+<li><code>$ sudo apt-get install -y nodejs</code><br>安装完node.js后，安装npm（node的包管理工具）：  </li>
+<li><code>$ sudo apt-get install npm</code></li>
+</ul>
+</blockquote>
+<p><strong>Hexo</strong><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>是一款基于Node.js的静态博客框架，让上百个页面在几秒内完成渲染。  </p>
+<blockquote>
+<p>先在电脑的磁盘中创建一个文件夹，然后<code>cd</code>到该文件夹下，或则直接在该文件夹下右键,选中<em>git bush here</em>。<br>使用npm安装Hexo：</p>
+<ul>
+<li><code>$ sudo npm install hexo-cli -g</code>   </li>
+</ul>
+<p>运行<code>hexo -v</code>可以查看当前版本。  </p>
+</blockquote>
+<p><img src="http://olq5mp7jp.bkt.clouddn.com/2018050822352.png" alt="hexo版本">  </p>
+<blockquote>
+<p>初始化命令：<code>hexo init</code>,初始化之后，打开其对应的文件夹可以看到一下文件： </p>
+</blockquote>
+<p><img src="http://olq5mp7jp.bkt.clouddn.com/201805082249.png" alt="hexo初始化文件">  </p>
+<blockquote>
+<p>一下对上述文件稍作解释：  </p>
+<ul>
+<li>node_modules：依赖包  </li>
+<li>public:：用处存放生成页面  </li>
+<li>scaffolds：命令生成文章等的模版  </li>
+<li>source：用于命令创建的各种文章  </li>
+<li>themes：主题  </li>
+<li>_config.yml：整个博客的配置  </li>
+<li>db.json：source解析所得到的</li>
+<li>package.json：项目所需模块及配置信息</li>
+</ul>
+</blockquote>
+<p>以上准备工作基本完成。</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/01/04/随笔1/" data-toggle="tooltip" data-placement="top"
+                           title="2018年1月4号 雨 随笔">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMxNC84ODc1">
+                        <script type="text/javascript">
+                    (function(d, s) {
+                        var j, e = d.getElementsByTagName(s)[0];
+
+                        if (typeof LivereTower === 'function') { return; }
+
+                        j = d.createElement(s);
+                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                        j.async = true;
+
+                        e.parentNode.insertBefore(j, e);
+                    })(document, 'script');
+                        </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#准备工作"><span class="toc-text"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-text"><a href="#&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>&#x73AF;&#x5883;&#x642D;&#x5EFA;</span></a></li></ol></li></ol>
                 </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-					
-					</div><!--month-->
-					
-					
-					<div class="archive archive-month" data-date="201801">
-						<h3 class="archive-title">
-							<a href="/archives/2018/01">01</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/01/04/随笔1/">
-                        <h4 class="post-title">
-                            2018年1月4号 雨 随笔
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            爱一个人如果不说出来，就永远是一场意淫。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/01/04/蓝牙技术简述/">
-                        <h4 class="post-title">
-                            蓝牙技术简述
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            如果有所谓的太贫穷，不过是不敢再做梦。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2018/01/04/编译准备/">
-                        <h4 class="post-title">
-                            （四）OpenWrt--编译环境搭建
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            一般来说，“你已经很棒了”意思是“你并不是很棒”。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-					
-					</div><!--month-->
-					</div><!--year-->
-					
-					
-					
-					<div class="archive archive-year" data-date="2017">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2017">2017</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201712">
-						<h3 class="archive-title">
-							<a href="/archives/2017/12">12</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/20/诺基亚百年沉浮史3/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（三）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            不管事情变得多坏，在不远的地方，相信总会有一些美好即将来临。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/19/诺基亚百年沉浮史2/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（二）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            如果你相信自己，然后再加上一点点运气，那你所有梦想就都能实现。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/18/诺基亚百年沉浮史1/">
-                        <h4 class="post-title">
-                            诺基亚百年沉浮史（一）
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            不忘初心，方得始终。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/17/路由器的硬件组成/">
-                        <h4 class="post-title">
-                            （三）OpenWrt--路由板的硬件组成
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            相似的人适合一起欢闹，互补的人适合一起变老。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/16/路由板选型/">
-                        <h4 class="post-title">
-                            （二）OpenWrt--开发板选型
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            有时候，我们追寻更多的东西时候，却忘了我们已经拥有的一切。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/16/OpenWrt概述/">
-                        <h4 class="post-title">
-                            （一）OpenWrt--概述
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            我们一直在寻觅，寻觅，那个我们都有的结局。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/12/14/开关电源的基本原理及分类/">
-                        <h4 class="post-title">
-                            （一）开关电源--基本原理及分类
-                        </h4>
-                        
-                        <h4 class="post-subtitle">
-                            世界上最强大的人，就是那些能一个人孤单生活的人。
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
+            </div>
         </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#blog搭建"
+                           title="blog搭建">blog搭建</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
     </div>
+</article>
+
+
+
+
+
+
 
 <!-- Footer -->
 <!-- Footer -->
