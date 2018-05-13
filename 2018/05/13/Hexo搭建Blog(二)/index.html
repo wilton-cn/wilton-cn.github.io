@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Github+Hexo搭建个人Blog(一)｜wilton&#39;s blog
+        Github+Hexo搭建个人Blog(二)｜wilton&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http:wilton-cn.github.io/2018/05/08/Hexo搭建Blog/">
+    <link rel="canonical" href="http:wilton-cn.github.io/2018/05/13/Hexo搭建Blog(二)/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -145,13 +145,13 @@
 <!--only post-->
 
 
-<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/201805082141.jpg">
+<img class="wechat-title-img" src="http://olq5mp7jp.bkt.clouddn.com/201805131345.jpg">
 
 
 <style>
     
     header.intro-header {
-        background-image: url('http://olq5mp7jp.bkt.clouddn.com/201805082141.jpg');
+        background-image: url('http://olq5mp7jp.bkt.clouddn.com/201805131345.jpg');
     }
 
     
@@ -162,14 +162,14 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>Github+Hexo搭建个人Blog(一)</h1>
+                    <h1>Github+Hexo搭建个人Blog(二)</h1>
                     
-                    <h2 class="subheading">布衣桑饭，可乐终身。</h2>
+                    <h2 class="subheading">生活总是让我们遍体鳞伤，但到后来，那些受伤的地方一定会变成我们最强壮的地方。</h2>
                     
                     <span class="meta">
                          作者 wilton
                         <span>
-                          日期 2018-05-08
+                          日期 2018-05-13
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -184,7 +184,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            Github+Hexo搭建个人Blog(一)
+            Github+Hexo搭建个人Blog(二)
         </span>
     </div>
 </header>
@@ -195,63 +195,51 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直希望拥有完全属于自己的博客，一方面可以做笔记，记录个人成长，同时也可以写写随笔，当作一个小小的精神家园。虽然网上有很多类似简书、CSDN博客园等个人博客网站，但是页面样式个人不是很喜欢，同时还会在你的个人页面插入许多广告，让人反感。于是之前我就租了一个云服务器，搭建了一个基于wordpress的个人博客。但是其费用成本较大，后来到期后就干脆放弃了。后来在网上发现用Github+Hexo可以搭建，方便简洁，重要的是完全免费。好了，言归正传。接下来，让我一步一步教大家搭建一个自己的Blog。    </p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><strong>Github账号</strong><br>用作博客的远程仓库、域名和服务器等。<a href="https://github.com/" target="_blank" rel="noopener">Github官网</a>  </p>
-<p><strong>Git</strong><br>用于将本地的Hexo内容提交到Github上。为了方便操作，这里我用了Git Bush。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a>  </p>
+                <h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>新建一个名为<code>用户名.github.io</code>的仓库，比如说，我的github用户名是wilton_cn,那么就新建一个wilton_cn.github.io的仓库。（<strong>必须使用你的用户名，否则无效。</strong>）同时，这也是我以后网站的网址，别人就可以通过<a href="http://wilton_cn.github.io来访问我的网站了。（如果你不想另外都买域名的话。）" target="_blank" rel="noopener">http://wilton_cn.github.io来访问我的网站了。（如果你不想另外都买域名的话。）</a><br><img src="http://olq5mp7jp.bkt.clouddn.com/201806131651.jpg" alt="github仓库"><br><strong>注意：</strong>  </p>
 <blockquote>
-<p>gitbush安装完成后，打开gitbush，运行<code>git version</code>命令可以查看其版本。</p>
-</blockquote>
-<p><img src="http://olq5mp7jp.bkt.clouddn.com/2018050822351.png" alt="gitbush版本"></p>
-<p><strong>Node</strong><br>用于生成静态页面。<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js官网</a><br>除在官网下载安装包安装node外，也可以在gitbush上进行安装。</p>
-<blockquote>
-<p>在gitbush中运行以下下命令行：  </p>
 <ul>
-<li><code>$ sudo apt-get install -y nodejs</code><br>安装完node.js后，安装npm（node的包管理工具）：  </li>
-<li><code>$ sudo apt-get install npm</code></li>
+<li>注册的邮箱一定要验证，否则不会成功；</li>
+<li>仓库的名字必须为<code>username.github,io</code>，其中<code>suername</code>为你的用户名；</li>
+<li>仓库创建成功并不会立即生效，需要过一段时间，一般为10-30分钟。</li>
 </ul>
 </blockquote>
-<p><strong>Hexo</strong><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>是一款基于Node.js的静态博客框架，让上百个页面在几秒内完成渲染。  </p>
+<p>以上一个github仓库便创建成功了，以后你的博客代码以及博文等就都放在这个仓库啦。</p>
+<h2 id="绑定域名-不另购域名可跳过"><a href="#绑定域名-不另购域名可跳过" class="headerlink" title="绑定域名(不另购域名可跳过)"></a>绑定域名(不另购域名可跳过)</h2><p>上面说了，即使你不另外购买域名也可以通过<a href="http://xxx.github.io来访问网站。但是你可能觉得它不够个性，所以你可以另外购买一个域名作为网站的网址。购买域名的平台很多，这里大家就根据个人喜好自行选择吧。不过个人建议还是选一些大的平台比较靠谱，比如阿里腾讯等。" target="_blank" rel="noopener">http://xxx.github.io来访问网站。但是你可能觉得它不够个性，所以你可以另外购买一个域名作为网站的网址。购买域名的平台很多，这里大家就根据个人喜好自行选择吧。不过个人建议还是选一些大的平台比较靠谱，比如阿里腾讯等。</a><br>域名都买完成后就需要解析了，一般来说购买了域名都是会送免费解析的。常见的域名配置有两种，CANME和A记录，CNAME填写域名，A记录填写IP。由于不带www只能采用A记录，所以必须线ping一下<code>你的用户名.github.io</code>的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的地址，再将CNAME指向<code>你的用户名.github.io</code>，这样能确保无论是否添加www都可以访问。<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131716.png" alt="域名指向设置"><br>如何ping地址：<code>win+R</code>启功命令窗口，输入<code>cmd</code>。然后在命令窗口中输入<code>ping 用户名.github.io</code>,接下来你就会看到对应的IP。<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131725.png" alt="github仓库对应IP"><br>完成以上工作，并没有完成域名绑定，你还要做下面一步工作。在上一节说到的hexo的文件的source文件夹下创建一个CNAME文件，其中内容为你的域名，至于加不加www根据你个人喜好，具体差别如下：</p>
 <blockquote>
-<p>先在电脑的磁盘中创建一个文件夹，然后<code>cd</code>到该文件夹下，或则直接在该文件夹下右键,选中<em>git bush here</em>。<br>使用npm安装Hexo：</p>
 <ul>
-<li><code>$ sudo npm install hexo-cli -g</code>   </li>
-</ul>
-<p>运行<code>hexo -v</code>可以查看当前版本。  </p>
-</blockquote>
-<p><img src="http://olq5mp7jp.bkt.clouddn.com/2018050822352.png" alt="hexo版本">  </p>
-<blockquote>
-<p>初始化命令：<code>hexo init</code>,初始化之后，打开其对应的文件夹可以看到一下文件： </p>
-</blockquote>
-<p><img src="http://olq5mp7jp.bkt.clouddn.com/201805082249.png" alt="hexo初始化文件">  </p>
-<blockquote>
-<p>一下对上述文件稍作解释：  </p>
-<ul>
-<li>node_modules：依赖包  </li>
-<li>public:：用处存放生成页面  </li>
-<li>scaffolds：命令生成文章等的模版  </li>
-<li>source：用于命令创建的各种文章  </li>
-<li>themes：主题  </li>
-<li>_config.yml：整个博客的配置  </li>
-<li>db.json：source解析所得到的</li>
-<li>package.json：项目所需模块及配置信息</li>
+<li>如果你填写的是没有www的，比如wilton.wang，那么无论是访问<a href="http://www.wilton.wang还是http://wilton.wang，都会自动跳转到http://wilton.wang；" target="_blank" rel="noopener">http://www.wilton.wang还是http://wilton.wang，都会自动跳转到http://wilton.wang；</a>  </li>
+<li>如果你填写的是带www的，比如www.wiolton.wang，那么无论是访问<a href="http://www.wilton.wang还是http://wilton.wang，都会自动跳转到http://www.wilton.wang；" target="_blank" rel="noopener">http://www.wilton.wang还是http://wilton.wang，都会自动跳转到http://www.wilton.wang；</a></li>
+<li>如果你填写的是带www的，比如abc.wilton.wang，那么只能访问<a href="http://abc.wilton.wang，否则无效。" target="_blank" rel="noopener">http://abc.wilton.wang，否则无效。</a><br>此外，在你绑定了域名之后，你原来的<code>username.github.io</code>并没有失效，而是会是直接跳转到你的新的域名。  <h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2>为了能够将你的本地博客内容提交到github仓库，你要拥有github权限才可以，但是如果直接使用用户名和密码不太安全，所以我们使用ssh key来解决本地和服务器的连接的问题。<br>在git bush中输入<code>ssh-keygen -t rsa -C &quot;邮箱地址&quot;</code><br>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131825.png" alt="ssh 配置"><br>点击保存，完成配置。为了测试配置是否成功，输入以下带命令：<br><code>ssh -T git@github.con</code><br>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，如果配置成功，会看到一下内容：<br>Hi wilton-cn! You’ve successfully authenticated, but GitHub does not provide shell access.  </li>
 </ul>
 </blockquote>
-<p>以上准备工作基本完成。</p>
+<p>此外，你还需要配置一下内容：  </p>
+<blockquote>
+<p><code>$ git config --global user.name &quot;wilton-cn&quot; # 你的github用户名</code><br><code>$ git config --global user.email &quot;xxx@gmail.com&quot;  # 注册github的邮箱</code>  </p>
+<h2 id="提交本地blog内容到仓库"><a href="#提交本地blog内容到仓库" class="headerlink" title="提交本地blog内容到仓库"></a>提交本地blog内容到仓库</h2><p>在提交本地内容到仓库之前我们需要做一些配置，打开hexo文件夹下的 <em>_config.yml</em> 文件，修改配置，建立关联，主要做一下修改（其他的可以根据需求修改）：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131705.png" alt="hexo配置"><br>在git bush中cd到hexo的文件夹下或者在hexo文件夹下右键<code>git bush here</code>,输入<code>hexo init</code>,完成初始化。<br>然后运行一下命令行：<br><code>hexo generate</code><br><code>hexo deploy</code>  </p>
+</blockquote>
+<p>一些常用命令：  </p>
+<blockquote>
+<ul>
+<li>hexo new”postName” #新建文章</li>
+<li>hexo new page”pageName” #新建页面</li>
+<li>hexo generate #生成静态页面至public目录</li>
+<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
+<li>hexo deploy #将.deploy目录部署到GitHub</li>
+<li>hexo help # 查看帮助</li>
+<li>hexo version #查看Hexo的版本</li>
+</ul>
+</blockquote>
+<p>以上，本地的博客内容就被提交到服务器上了。在浏览器中输入域名，你就可以访问你的博客了。</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2018/05/13/Hexo搭建Blog(二)/" data-toggle="tooltip" data-placement="top"
-                           title="Github+Hexo搭建个人Blog(二)">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2018/01/04/随笔1/" data-toggle="tooltip" data-placement="top"
-                           title="2018年1月4号 雨 随笔">Next Post &rarr;</a>
+                        <a href="/2018/05/08/Hexo搭建Blog/" data-toggle="tooltip" data-placement="top"
+                           title="Github+Hexo搭建个人Blog(一)">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -286,7 +274,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#准备工作"><span class="toc-text"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-text"><a href="#&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>&#x73AF;&#x5883;&#x642D;&#x5EFA;</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建github博客"><span class="toc-text"><a href="#&#x642D;&#x5EFA;github&#x535A;&#x5BA2;" class="headerlink" title="&#x642D;&#x5EFA;github&#x535A;&#x5BA2;"></a>&#x642D;&#x5EFA;github&#x535A;&#x5BA2;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建仓库"><span class="toc-text"><a href="#&#x521B;&#x5EFA;&#x4ED3;&#x5E93;" class="headerlink" title="&#x521B;&#x5EFA;&#x4ED3;&#x5E93;"></a>&#x521B;&#x5EFA;&#x4ED3;&#x5E93;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定域名-不另购域名可跳过"><span class="toc-text"><a href="#&#x7ED1;&#x5B9A;&#x57DF;&#x540D;-&#x4E0D;&#x53E6;&#x8D2D;&#x57DF;&#x540D;&#x53EF;&#x8DF3;&#x8FC7;" class="headerlink" title="&#x7ED1;&#x5B9A;&#x57DF;&#x540D;(&#x4E0D;&#x53E6;&#x8D2D;&#x57DF;&#x540D;&#x53EF;&#x8DF3;&#x8FC7;)"></a>&#x7ED1;&#x5B9A;&#x57DF;&#x540D;(&#x4E0D;&#x53E6;&#x8D2D;&#x57DF;&#x540D;&#x53EF;&#x8DF3;&#x8FC7;)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SSH-key"><span class="toc-text"><a href="#&#x914D;&#x7F6E;SSH-key" class="headerlink" title="&#x914D;&#x7F6E;SSH key"></a>&#x914D;&#x7F6E;SSH key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交本地blog内容到仓库"><span class="toc-text"><a href="#&#x63D0;&#x4EA4;&#x672C;&#x5730;blog&#x5185;&#x5BB9;&#x5230;&#x4ED3;&#x5E93;" class="headerlink" title="&#x63D0;&#x4EA4;&#x672C;&#x5730;blog&#x5185;&#x5BB9;&#x5230;&#x4ED3;&#x5E93;"></a>&#x63D0;&#x4EA4;&#x672C;&#x5730;blog&#x5185;&#x5BB9;&#x5230;&#x4ED3;&#x5E93;</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
