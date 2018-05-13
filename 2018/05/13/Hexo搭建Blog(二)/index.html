@@ -79,14 +79,6 @@
                     
                         
 							
-                        <li>
-                            <a href="/archive/">archive</a>
-                        </li>
-							
-						
-                    
-                        
-							
 								
 							
 						
@@ -95,6 +87,14 @@
 							
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archive/">archive</a>
                         </li>
 							
 						
@@ -207,15 +207,15 @@
 <h2 id="绑定域名-不另购域名可跳过"><a href="#绑定域名-不另购域名可跳过" class="headerlink" title="绑定域名(不另购域名可跳过)"></a>绑定域名(不另购域名可跳过)</h2><p>上面说了，即使你不另外购买域名也可以通过<a href="http://xxx.github.io" target="_blank" rel="noopener">http://xxx.github.io</a> 来访问网站。但是你可能觉得它不够个性，所以你可以另外购买一个域名作为网站的网址。购买域名的平台很多，这里大家就根据个人喜好自行选择吧。不过个人建议还是选一些大的平台比较靠谱，比如阿里腾讯等。<br>域名都买完成后就需要解析了，一般来说购买了域名都是会送免费解析的。常见的域名配置有两种，CANME和A记录，CNAME填写域名，A记录填写IP。由于不带www只能采用A记录，所以必须线ping一下<code>你的用户名.github.io</code>的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的地址，再将CNAME指向<code>你的用户名.github.io</code>，这样能确保无论是否添加www都可以访问。<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131716.png" alt="域名指向设置"><br>如何ping地址：<code>win+R</code>启功命令窗口，输入<code>cmd</code>。然后在命令窗口中输入<code>ping 用户名.github.io</code>,接下来你就会看到对应的IP。<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131725.png" alt="github仓库对应IP"><br>完成以上工作，并没有完成域名绑定，你还要做下面一步工作。在上一节说到的hexo的文件的source文件夹下创建一个CNAME文件，其中内容为你的域名，至于加不加www根据你个人喜好，具体差别如下：</p>
 <blockquote>
 <ul>
-<li>如果你填写的是没有www的，比如wilton.wang，那么无论是访问<a href="http://www.wilton.wang" target="_blank" rel="noopener">http://www.wilton.wang</a> 还是 <a href="http://wilton.wang，都会自动跳转到" target="_blank" rel="noopener">http://wilton.wang，都会自动跳转到</a> <a href="http://wilton.wang；" target="_blank" rel="noopener">http://wilton.wang；</a>  </li>
-<li>如果你填写的是带www的，比如www.wiolton.wang，那么无论是访问<a href="http://www.wilton.wang" target="_blank" rel="noopener">http://www.wilton.wang</a> 还是 <a href="http://wilton.wang，都会自动跳转到" target="_blank" rel="noopener">http://wilton.wang，都会自动跳转到</a> <a href="http://www.wilton.wang；" target="_blank" rel="noopener">http://www.wilton.wang；</a></li>
-<li>如果你填写的是带www的，比如abc.wilton.wang，那么只能访问<a href="http://abc.wilton.wang，否则无效。" target="_blank" rel="noopener">http://abc.wilton.wang，否则无效。</a><br>此外，在你绑定了域名之后，你原来的<code>username.github.io</code>并没有失效，而是会是直接跳转到你的新的域名。  <h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2>为了能够将你的本地博客内容提交到github仓库，你要拥有github权限才可以，但是如果直接使用用户名和密码不太安全，所以我们使用ssh key来解决本地和服务器的连接的问题。<br>在git bush中输入<code>ssh-keygen -t rsa -C &quot;邮箱地址&quot;</code><br>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131825.png" alt="ssh 配置"><br>点击保存，完成配置。为了测试配置是否成功，输入以下带命令：<br><code>ssh -T git@github.con</code><br>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，如果配置成功，会看到一下内容：<br>Hi wilton-cn! You’ve successfully authenticated, but GitHub does not provide shell access.  </li>
+<li>如果你填写的是没有www的，比如wilton.wang，那么无论是访问 <a href="http://www.wilton.wang" target="_blank" rel="noopener">http://www.wilton.wang</a> 还是 <a href="http://wilton.wang，都会自动跳转到" target="_blank" rel="noopener">http://wilton.wang，都会自动跳转到</a> <a href="http://wilton.wang；" target="_blank" rel="noopener">http://wilton.wang；</a>  </li>
+<li>如果你填写的是带www的，比如www.wiolton.wang，那么无论是访问 <a href="http://www.wilton.wang" target="_blank" rel="noopener">http://www.wilton.wang</a> 还是 <a href="http://wilton.wang，都会自动跳转到" target="_blank" rel="noopener">http://wilton.wang，都会自动跳转到</a> <a href="http://www.wilton.wang；" target="_blank" rel="noopener">http://www.wilton.wang；</a></li>
+<li>如果你填写的是带www的，比如abc.wilton.wang，那么只能访问 <a href="http://abc.wilton.wang，否则无效。" target="_blank" rel="noopener">http://abc.wilton.wang，否则无效。</a><br>此外，在你绑定了域名之后，你原来的<code>username.github.io</code>并没有失效，而是会是直接跳转到你的新的域名。  <h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2>为了能够将你的本地博客内容提交到github仓库，你要拥有github权限才可以，但是如果直接使用用户名和密码不太安全，所以我们使用ssh key来解决本地和服务器的连接的问题。<br>在git bush中输入<code>$ ssh-keygen -t rsa -C &quot;邮箱地址&quot;</code><br>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131825.png" alt="ssh 配置"><br>点击保存，完成配置。为了测试配置是否成功，输入以下带命令：<br><code>ssh -T git@github.con</code><br>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，如果配置成功，会看到一下内容：<br>Hi wilton-cn! You’ve successfully authenticated, but GitHub does not provide shell access.  </li>
 </ul>
 </blockquote>
 <p>此外，你还需要配置一下内容：  </p>
 <blockquote>
 <p><code>$ git config --global user.name &quot;wilton-cn&quot; # 你的github用户名</code><br><code>$ git config --global user.email &quot;xxx@gmail.com&quot;  # 注册github的邮箱</code>  </p>
-<h2 id="提交本地blog内容到仓库"><a href="#提交本地blog内容到仓库" class="headerlink" title="提交本地blog内容到仓库"></a>提交本地blog内容到仓库</h2><p>在提交本地内容到仓库之前我们需要做一些配置，打开hexo文件夹下的 <em>_config.yml</em> 文件，修改配置，建立关联，主要做一下修改（其他的可以根据需求修改）：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131705.png" alt="hexo配置"><br>在git bush中cd到hexo的文件夹下或者在hexo文件夹下右键<code>git bush here</code>,输入<code>hexo init</code>,完成初始化。<br>然后运行一下命令行：<br><code>hexo generate</code><br><code>hexo deploy</code>  </p>
+<h2 id="提交本地blog内容到仓库"><a href="#提交本地blog内容到仓库" class="headerlink" title="提交本地blog内容到仓库"></a>提交本地blog内容到仓库</h2><p>在提交本地内容到仓库之前我们需要做一些配置，打开hexo文件夹下的 <em>_config.yml</em> 文件，修改配置，建立关联，主要做一下修改（其他的可以根据需求修改）：<br><img src="http://olq5mp7jp.bkt.clouddn.com/201805131705.png" alt="hexo配置"><br>在git bush中cd到hexo的文件夹下或者在hexo文件夹下右键<code>git bush here</code>,输入<code>hexo init</code>,完成初始化。<br>然后运行一下命令行：<br><code>$ hexo generate</code><br><code>$ hexo deploy</code>  </p>
 </blockquote>
 <p>一些常用命令：  </p>
 <blockquote>
